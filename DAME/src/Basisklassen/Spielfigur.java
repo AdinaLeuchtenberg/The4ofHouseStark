@@ -9,16 +9,16 @@ public class Spielfigur {
 	
 	private double position;
 	private int [] playerArray = new int[24];
-	private FarbenEnum farbenEnum;
+	private FarbEnum farbenEnum;
 	
 	public void colours( int [] playerArray){
 		/**
 		 * @param playerArray Anzahl der Player
 		 */
 	if(position > (playerArray.length/2)){
-		FarbenEnum colour = FarbenEnum.black;
+		FarbEnum colour = farbenEnum.black;
 	}
-	else FarbenEnum.white;
+	else farbenEnum.white;
 	}
 	
 	public double posPlayer(double position1){
