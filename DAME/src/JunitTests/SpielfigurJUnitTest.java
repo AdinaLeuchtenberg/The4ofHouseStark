@@ -15,6 +15,9 @@ public class SpielfigurJUnitTest {
 	public void Spielfigur(){
 		spielfigur = new Spielfigur();
 	}
+	/**
+	 * creats new spielfigur
+	 */
 	
 	@Test
 	public void test() {
