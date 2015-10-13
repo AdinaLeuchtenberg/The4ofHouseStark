@@ -1,4 +1,4 @@
-package Basisklassen;
+package ExtraKlassen;
 
 public enum FarbEnum {
 

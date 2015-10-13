@@ -1,5 +1,7 @@
 package Basisklassen;
 
+import ExtraKlassen.FarbEnum;
+
 public class Spielfigur {
 	/**
 	 * @author The4ofHouseStark
@@ -10,6 +12,7 @@ public class Spielfigur {
 	private double position;
 	private int [] playerArray = new int[24];
 	private FarbEnum farbenEnum;
+	private Spielbrett map;
 	
 	public void colours( int [] playerArray){
 		/**
@@ -21,8 +24,9 @@ public class Spielfigur {
 	else farbenEnum = FarbEnum.white;
 	}
 	
-	public double posPlayer(double position1){
-			return;
+	public double posPlayer(double iD){
+			
+		return;
 		}
 	
 }
