@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Basisklassen.Spielbrett;
-import Basisklassen.Spielfeld;
+
 
 
 /**
@@ -36,9 +36,7 @@ public class SpielbrettJunitTest {
 	 */
 	@Before
 	public void testBoard() {
-		testBoard = new Array[12][12];
-		//toDo richtige ids übergeben
-
+		testBoard = new TestBoard;
 	}
 
 	/**
@@ -47,9 +45,17 @@ public class SpielbrettJunitTest {
 	@Test
 	public void rightFieldId() {
 		Array[][] fieldId = board.getBoard();
-		
 		assertArrayEquals(fieldId, testBoard);
-		
 	}
+	
+	/**
+	 * Test to check if the board has the right colours
+	 */
+	@Test
+	public void rightFieldColour() {
+		Array[][] fieldColour = board.getFieldColour();
+		assertArrayEquals(fieldColour, testBoard);
+	}
+	
 
 }
