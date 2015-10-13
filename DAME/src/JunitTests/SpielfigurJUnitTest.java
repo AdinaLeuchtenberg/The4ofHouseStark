@@ -16,7 +16,7 @@ public class SpielfigurJUnitTest {
 		spielfigur = new Spielfigur();
 	}
 	/**
-	 * creats new spielfigur
+	 * creates new spielfigur
 	 */
 	
 	@Test
