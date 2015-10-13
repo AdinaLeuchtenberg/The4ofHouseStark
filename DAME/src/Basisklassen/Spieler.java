@@ -22,5 +22,17 @@ public class Spieler {
 	public void setSpielerName(String n) {
 		this.spielerName = n;
 	}
-
+	
+	public void addPlayer(){
+		AnzPlayer.add(getSpielerName());
+		AnzPlayer.add(1, getSpielerName());
+	}
+	
+  public void PlayerColour (){
+  	if(AnzPlayer.contains(getSpielerName())){
+  		farbenEnum = farbenEnum.black;
+  				
+  	}else farbenEnum = farbenEnum.white;
+  
+  }
 }
