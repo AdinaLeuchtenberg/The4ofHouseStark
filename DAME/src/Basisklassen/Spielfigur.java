@@ -16,15 +16,14 @@ public class Spielfigur {
 		 * @param playerArray Anzahl der Player
 		 */
 	if(position > (playerArray.length/2)){
-		FarbEnum colour = farbenEnum.black;
+		FarbEnum colour = FarbEnum.black;
 	}
-	else farbenEnum.white;
+	else farbenEnum = FarbEnum.white;
 	}
 	
 	public double posPlayer(double position1){
 			return;
 		}
-	}
 	
 }
-}
+
