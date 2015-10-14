@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Basisklassen.Spielbrett;
+import ExtraKlassen.Testboard;
 
 
 
@@ -36,7 +37,7 @@ public class SpielbrettJunitTest {
 	 */
 	@Before
 	public void testBoard() {
-		testBoard = new TestBoard;
+		testBoard = new Testboard();
 	}
 
 	/**
