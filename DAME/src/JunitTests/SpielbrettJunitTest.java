@@ -21,7 +21,7 @@ import ExtraKlassen.Testboard;
 public class SpielbrettJunitTest {
 	
 	private Spielbrett board;
-	private Array[][] testBoard;
+	private Testboard testBoard;
 	
 	/**
 	 * creates a new board object before starting the Junit test
@@ -46,7 +46,7 @@ public class SpielbrettJunitTest {
 	@Test
 	public void rightFieldId() {
 		Array[][] fieldId = board.getBoard();
-		assertArrayEquals(fieldId, testBoard);
+		assertArrayEquals(fieldId, testBoard.testArray());
 	}
 	
 	/**
@@ -55,7 +55,7 @@ public class SpielbrettJunitTest {
 	@Test
 	public void rightFieldColour() {
 		Array[][] fieldColour = board.getFieldColour();
-		assertArrayEquals(fieldColour, testBoard);
+		assertArrayEquals(fieldColour, testBoard.colourArray());
 	}
 	
 
