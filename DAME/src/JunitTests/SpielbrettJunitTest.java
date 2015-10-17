@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Basisklassen.Spielbrett;
+import ExtraKlassen.FarbEnum;
 import ExtraKlassen.Testboard;
 
 
@@ -54,7 +55,7 @@ public class SpielbrettJunitTest {
 	 */
 	@Test
 	public void rightFieldColour() {
-		Array[][] fieldColour = board.getFieldColour();
+		FarbEnum[][] fieldColour = board.getFieldColour();
 		assertArrayEquals(fieldColour, testBoard.colourArray());
 	}
 	

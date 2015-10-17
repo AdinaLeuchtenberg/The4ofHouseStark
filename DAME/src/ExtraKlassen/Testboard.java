@@ -39,10 +39,10 @@ public String[][] testArray() {
 	 * @return returns an array with the right field colours; 1 = black; 0 = white; 
 	 */
 
-	public int[][] colourArray() {
-		int[][] colourArray = new int[12][12];
-		int black = 1;
-		int white = 0;
+	public FarbEnum[][] colourArray() {
+		FarbEnum[][] colourArray = new FarbEnum[12][12];
+		FarbEnum black = FarbEnum.black;
+		FarbEnum white = FarbEnum.white;
 		for(int i = 0; i < colourArray.length; i++) {
 			for(int j = 0; j < colourArray[i].length; j++) {
 				if((i + j) % 2 != 0) {
