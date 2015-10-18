@@ -13,9 +13,9 @@ import ExtraKlassen.FarbEnum;
 public class Spieler {
 	
 	private String spielerName;
-	private FarbEnum farbenEnum;
+	private FarbEnum farbEnum;
 	private ArrayList AnzPlayer = new ArrayList();
-	//
+	
 	public String getSpielerName() {
 		return spielerName;
 	}
@@ -40,9 +40,9 @@ public class Spieler {
 	
   public void PlayerColour (){
   	if(AnzPlayer.contains(getSpielerName())){
-  		farbenEnum = farbenEnum.white;
+  		farbEnum = farbEnum.white;
   				
-  	}else farbenEnum = farbenEnum.black;
+  	}else farbEnum = farbEnum.black;
   
   }
 }
