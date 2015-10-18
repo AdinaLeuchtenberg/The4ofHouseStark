@@ -24,22 +24,30 @@ public class Spielbrett {
 	private Spielbrett createSpielbrett() {
 		FarbEnum colour = FarbEnum.black;
 		String id = new String();
-	
+		int number = 12;
+		
 		for(int i = 0; i < fieldArray.length; i++) {
+			while(number >= 1) {
 			for(int j = 0; j < fieldArray[i].length; j++) {
-				fieldArray[i][j] = new Spielfeld(colour, id);
-				if(colour == FarbEnum.black) {
-					colour = FarbEnum.white;
-				} else {
-					colour = FarbEnum.black;
-				}
+				int letter = 97;
+				while(letter <= 108) {
+					id = (String.valueOf((char)letter) + String.valueOf(number));
+						fieldArray[i][j] = new Spielfeld(colour, id);
+						letter++;
+						
+						if(colour == FarbEnum.black) {
+							colour = FarbEnum.white;
+						} else {
+							colour = FarbEnum.black;
+						}
+			} number++;
 			}
 			if(colour == FarbEnum.black) {
 				colour = FarbEnum.white;
-			} else {
-				colour = FarbEnum.black;
-			}
-				
+				} else {
+					colour = FarbEnum.black;
+				}	
+		}
 		}
 	}
 	
@@ -52,7 +60,7 @@ public class Spielbrett {
 	 * @param colourBoard the Board of which the colour spreading will be returned in an FarbEnum Array
 	 * @return returns an Array of type FarbEnum. It represents the colour spreading of the board
 	 */
-	public FarbEnum[][] getFieldColour(Spielbrett colourBoard) {
+	private FarbEnum[][] getFieldColour(Spielbrett colourBoard) {
 		colourBoard = getSpielbrett();
 		FarbEnum[][] fieldColour = new FarbEnum[12][12];
 		for(int i = 0; i < fieldColour.length; i++) {
@@ -61,7 +69,6 @@ public class Spielbrett {
 				//fieldColour[i][j] = 
 			}
 		}
-	
 	}
 }
 

@@ -36,7 +36,7 @@ public String[][] testArray() {
 
 	/**
 	 * colourArray Method to test the right colourspreading
-	 * @return returns an array with the right field colours; 1 = black; 0 = white; 
+	 * @return returns an array with the right field colours
 	 */
 
 	public FarbEnum[][] colourArray() {
@@ -51,10 +51,11 @@ public String[][] testArray() {
 					colourArray[i][j] = white;
 				}
 				//ToDO syso löschen!
-				System.out.print(colourArray[i][j]);
+				System.out.print(colourArray[i][j].toString());
 			} System.out.println("\n");
 		}
 	
 	return colourArray;
 	}
+	
 }
