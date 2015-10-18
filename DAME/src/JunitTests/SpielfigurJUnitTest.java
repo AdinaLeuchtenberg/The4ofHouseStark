@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Basisklassen.Spielfigur;
+import ExtraKlassen.FarbEnum;
 
 
 public class SpielfigurJUnitTest {
@@ -17,11 +18,15 @@ public class SpielfigurJUnitTest {
 	}
 	/**
 	 * creates new spielfigur
+	 * @param farbenEnum 
 	 */
 	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public boolean ColourOfPlayer(int[] playerArray, int x, FarbEnum farbenEnum) {
+		if (playerArray[x]< (playerArray.length/2)){
+			farbenEnum = FarbEnum.white;
+			return true;
+			} else return false;
 	}
 
 }

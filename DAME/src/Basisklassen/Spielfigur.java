@@ -14,17 +14,31 @@ public class Spielfigur {
 	private FarbEnum farbenEnum;
 	private Spielbrett map;
 	
-	public void colours( int [] playerArray){
+	public Spielfigur(){
+		this.position(position);
+		
+	}
+	
+	public double getPosition() {
+		return position;
+	}
+
+
+	public void setPosition(double position) {
+		this.position = position;
+	}
+
+	public void colours( int [] playerArray, int i){
 		/**
 		 * @param playerArray Anzahl der Player
 		 */
-	if(position > (playerArray.length/2)){
-		FarbEnum colour = FarbEnum.black;
+	if(playerArray[i] > (playerArray.length/2)){
+		farbenEnum = FarbEnum.black;
 	}
 	else farbenEnum = FarbEnum.white;
 	}
 	
-	public double posPlayer(double iD){
+	public double position(double iD){
 			
 		return;
 		}
