@@ -10,19 +10,25 @@ import ExtraKlassen.FarbEnum;
  */
 public class Spielbrett {
 	Spielfeld[][] fieldArray = new Spielfeld[12][12];
-	Spielbrett newBoard;
+	Spielfeld[][] newBoard;
+	private FarbEnum[][] newColour;
+	private String[][] newId;
 	
-	private Spielbrett() {
-		 this.newBoard = createSpielbrett();
+	public Spielbrett() {
+		 newBoard = createSpielbrett();
 	}
 		
 	/**
 	 * Method createSpielbrett() creates a gaming Board with the size 12*12. Each field on the Board has a different Id 
 	 * and different colour
+	 * Array newColour to save the colour of the field
+	 * Array newId to save the Ids of the field
 	 * @return returns a gaming board
 	 */
-	private Spielbrett createSpielbrett() {
+	private Spielfeld[][] createSpielbrett() {
 		FarbEnum colour = FarbEnum.black;
+		newColour = new FarbEnum[12][12];
+		newId = new String[12][12];
 		String id = new String();
 		int number = 12;
 		
@@ -32,7 +38,12 @@ public class Spielbrett {
 				int letter = 97;
 				while(letter <= 108) {
 					id = (String.valueOf((char)letter) + String.valueOf(number));
+					// schreibt ins Spielbrett colour und id
 						fieldArray[i][j] = new Spielfeld(colour, id);
+						// schreibt in newColour nur die Farbe der Felder
+						newColour[i][j] = colour;
+						// schreibt in newId nur die ids der Felder
+						newId[i][j] = id;
 						letter++;
 						
 						if(colour == FarbEnum.black) {
@@ -49,27 +60,33 @@ public class Spielbrett {
 				}	
 		}
 		}
+		return fieldArray;
 	}
 	
-	public Spielbrett getSpielbrett() {
+	/**
+	 * 
+	 * @return returns the gaming board
+	 */
+	public Spielfeld[][] getSpielbrett() {
 		return newBoard;
 	}
 	
 	/**
-	 * Method getFieldColour 
-	 * @param colourBoard the Board of which the colour spreading will be returned in an FarbEnum Array
-	 * @return returns an Array of type FarbEnum. It represents the colour spreading of the board
+	 * 
+	 * @return returns the colour Array
 	 */
-	private FarbEnum[][] getFieldColour(Spielbrett colourBoard) {
-		colourBoard = getSpielbrett();
-		FarbEnum[][] fieldColour = new FarbEnum[12][12];
-		for(int i = 0; i < fieldColour.length; i++) {
-			for(int j = 0; j < fieldColour[i].length; j++) {
-				//ToDO Farben des Spielbretts in fieldColour schreiben
-				//fieldColour[i][j] = 
-			}
-		}
+	public FarbEnum[][] getFarbEnum() {
+		return newColour;
 	}
+	
+	/**
+	 * 
+	 * @return returns the id Array
+	 */
+	public String[][] getNewId() {
+		return newId;
+	}
+	
 }
 
 
