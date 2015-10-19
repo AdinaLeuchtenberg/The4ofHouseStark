@@ -8,7 +8,7 @@ import ExtraKlassen.FarbEnum;
 	 */
 public abstract class Spielfigur {
 	
-	private double position;
+	private String position;
 	private int [] TokenArray = new int[24];
 	private FarbEnum farbenEnum;
 	private Spielbrett map;
@@ -21,12 +21,12 @@ public abstract class Spielfigur {
 		
 	}
 	
-	public double getPosition() {
+	public String getPosition() {
 		return position;
 	}
 
 
-	public void setPosition(double position) {
+	public void setPosition(String position) {
 		this.position = position;
 	}
 	
