@@ -3,12 +3,19 @@ package Basisklassen;
 import java.util.ArrayList;
 import ExtraKlassen.FarbEnum;
 
-/*
+/**
  * class Spieler
  * @author The4ofHouseStark
  * @version 1.0
  *
  */
+
+//?????????????????????????????????
+//Public class Spieler extends KI {
+//  
+//   super();
+//   this.ki = ki;
+//}
 
 public class Spieler {
 	
@@ -25,7 +32,7 @@ public class Spieler {
 	}
 	
 	/**
-	 *@param adds player,spielerName to AnzPlayer ArrayList
+	 *adds player,spielerName to AnzPlayer ArrayList
 	 */
 	
 	public void addPlayer(){
@@ -35,7 +42,7 @@ public class Spieler {
 	
 	/**
 	 * Method PlayerColour() 
-	 * @param Player1 gets the color white, next player gets the color black out of farbenEnum
+	 * Player1 gets the color white, next player gets the color black out of farbenEnum
 	 */
 	
   public void PlayerColour (){
