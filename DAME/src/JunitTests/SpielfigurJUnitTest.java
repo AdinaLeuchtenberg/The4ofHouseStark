@@ -4,8 +4,10 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import Basisklassen.Spielbrett;
 import Basisklassen.Spielfigur;
 import ExtraKlassen.FarbEnum;
+import SpielKlassen.Spielstein;
 /**
  * @author The4ofHouseStark
  * @version 1.0
@@ -13,21 +15,25 @@ import ExtraKlassen.FarbEnum;
 
 public class SpielfigurJUnitTest {
 	
-	private Spielfigur spielfigur;
+	private Spielfigur spielstein;
+	private FarbEnum farbenEnum;
+	
+	@Before
+	public void newSpielfigur(){
+		spielstein = new Spielstein();
+	}
 	
 	/**
 	 * 
 	 * @param TokenArray Array of Tokens
 	 * @param x Token in Array
-	 * @param farbenEnum colour of Tokens
 	 * @return Test passed if colour white, Test failed ("false") if colour black
 	 */
 	@Test
-	public boolean ColourOfPlayer(int[] TokenArray, int x, FarbEnum farbenEnum) {
+	public void ColourOfPlayer(int[] TokenArray, int x) {
 		if (TokenArray[x]< (TokenArray.length/2)){
-			farbenEnum = FarbEnum.white;
-			return true;
-			} else return false;
+			assertTrue(FarbEnum.white);
+		}
 	}
 
 }

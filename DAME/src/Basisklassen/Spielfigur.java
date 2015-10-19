@@ -9,7 +9,7 @@ import ExtraKlassen.FarbEnum;
 public abstract class Spielfigur {
 	
 	private String position;
-	private int [] TokenArray = new int[24];
+	protected int [] TokenArray = new int[24];
 	private FarbEnum farbenEnum;
 	private Spielbrett map;
 	
