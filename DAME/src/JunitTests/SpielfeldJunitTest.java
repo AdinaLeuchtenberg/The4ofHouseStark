@@ -21,7 +21,7 @@ public class SpielfeldJunitTest {
 	 */
 	
 	@Before
-	public void Spielfelderzeugen(){;
+	public void Spielfelderzeugen(){
 	Spielfeld A2 = new Spielfeld(FarbEnum.black,"A2");
 	this.A1=A2;
 	}
