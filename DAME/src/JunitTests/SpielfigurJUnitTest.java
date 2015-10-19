@@ -16,16 +16,6 @@ public class SpielfigurJUnitTest {
 	private Spielfigur spielfigur;
 	
 	/**
-	 * creates new spielfigur
-	 * @param farbenEnum 
-	 */
-	
-	@Before
-	public void Spielfigur(){
-		spielfigur = new Spielfigur();
-	}
-	
-	/**
 	 * 
 	 * @param TokenArray Array of Tokens
 	 * @param x Token in Array
