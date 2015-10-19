@@ -15,6 +15,7 @@ FarbEnum color;
 
 /**
  * constructor sets color, ID
+ * @param y color of the field, x ID of the field
  */
 public Spielfeld(FarbEnum y,String x){
 	this.color = y;
