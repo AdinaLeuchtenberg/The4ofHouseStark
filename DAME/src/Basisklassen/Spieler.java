@@ -1,6 +1,7 @@
 package Basisklassen;
 
 import java.util.ArrayList;
+
 import ExtraKlassen.FarbEnum;
 
 /**
@@ -21,7 +22,7 @@ public class Spieler {
 	
 	private String spielerName;
 	private FarbEnum farbEnum;
-	private ArrayList AnzPlayer = new ArrayList();
+	private ArrayList <String> AnzPlayer = new ArrayList<String>();
 	
 	public String getSpielerName() {
 		return spielerName;
