@@ -6,7 +6,7 @@ import ExtraKlassen.FarbEnum;
 	 * @author The4ofHouseStark
 	 * @version 1.0
 	 */
-public class Spielfigur {
+public abstract class Spielfigur {
 	
 	private double position;
 	private int [] TokenArray = new int[24];
@@ -45,7 +45,7 @@ public class Spielfigur {
 	 * @param iD position on Field
 	 * @return position on Field
 	 */
-	public double position(double iD){
+	public String position(String iD){
 			
 		return;
 		}
