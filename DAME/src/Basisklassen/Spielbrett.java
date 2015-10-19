@@ -40,7 +40,7 @@ public class Spielbrett {
 						} else {
 							colour = FarbEnum.black;
 						}
-			} number++;
+			} number--;
 			}
 			if(colour == FarbEnum.black) {
 				colour = FarbEnum.white;
