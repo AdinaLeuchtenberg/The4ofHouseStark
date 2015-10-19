@@ -30,7 +30,7 @@ public class SpielerJunitTest {
 	
 	@Before
 	public void testSpieler(){
-		Spieler player = new Spieler();
+		player = new Spieler();
 	}
 	
 	/**
