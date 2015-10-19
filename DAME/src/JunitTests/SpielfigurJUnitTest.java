@@ -1,6 +1,7 @@
 package JunitTests;
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,6 +18,8 @@ public class SpielfigurJUnitTest {
 	
 	private Spielfigur spielstein;
 	private FarbEnum farbenEnum;
+	private int [] TestTokenArray;
+	private int x;
 	
 	@Before
 	public void newSpielfigur(){
@@ -27,13 +30,17 @@ public class SpielfigurJUnitTest {
 	 * 
 	 * @param TokenArray Array of Tokens
 	 * @param x Token in Array
+	 * @param farbenEnum.black 
 	 * @return Test passed if colour white, Test failed ("false") if colour black
 	 */
 	@Test
-	public void ColourOfPlayer(int[] TokenArray, int x) {
-		if (TokenArray[x]< (TokenArray.length/2)){
-			assertTrue(FarbEnum.white);
-		}
-	}
-
+	public boolean ColourOfPlayer(){
+		/*if(TokenArray[i] < (TokenArray.length/2)){
+			farbenEnum = FarbEnum.white;
+			return true;
+		} else return false;
+		 */	
+		assertEquals(spielstein.colours(TestTokenArray, x, farbenEnum.black));
 }
+}
+

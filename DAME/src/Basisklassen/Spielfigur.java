@@ -33,7 +33,7 @@ public abstract class Spielfigur {
 	/**
 		* @param playerArray Amount of Tokens, i Token in Array
 	*/
-	public void colours( int [] TokenArray, int i){
+	public void colours( int [] TokenArray, int i, FarbEnum farbenEnum){
 		
 	if(TokenArray[i] > (TokenArray.length/2)){
 		farbenEnum = FarbEnum.black;
