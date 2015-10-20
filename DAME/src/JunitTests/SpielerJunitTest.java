@@ -38,12 +38,13 @@ public class SpielerJunitTest {
 	 */
 	
 	@Test
-	public boolean PlayerColour() {
+	public void PlayerColour() {
+		boolean x =true;
 		if( AnzPlayer.add(1)){
   		farbEnum = farbEnum.black;
-  		return true;
-		} else return false;
-		
+  		x =true;
+		} else x = false;
+		assertTrue(x);
 	}
 
 }
