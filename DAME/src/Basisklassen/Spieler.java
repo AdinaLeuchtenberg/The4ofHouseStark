@@ -29,6 +29,7 @@ public class Spieler {
 	}
 
 	public void setSpielerName(String n) {
+		if (n==null) throw new RuntimeException("Ungültige Eingabe!");
 		this.spielerName = n;
 	}
 	
