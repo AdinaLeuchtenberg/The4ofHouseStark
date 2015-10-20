@@ -8,6 +8,7 @@ import ExtraKlassen.FarbEnum;
  * @version 1.0
  *
  */
+//test
 public class Spielbrett {
 	Spielfeld[][] fieldArray = new Spielfeld[12][12];
 	Spielfeld[][] newBoard;
