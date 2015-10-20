@@ -31,24 +31,23 @@ public abstract class Spielfigur {
 	}
 	
 	/**
-		* @param playerArray Amount of Tokens, i Token in Array
+		* @param playerArray Amount of Tokens, i Token in Array, FarbEnum colour
+		* @return return colour of token
 	*/
-	public void colours( int [] TokenArray, int i, FarbEnum farbenEnum){
+	public FarbEnum colours( int [] TokenArray, int i, FarbEnum farbenEnum){
 		
 	if(TokenArray[i] > (TokenArray.length/2)){
 		farbenEnum = FarbEnum.black;
 	}
 	else farbenEnum = FarbEnum.white;
+	return farbenEnum;
 	}
 	
 	/**
 	 * @param iD position on Field
 	 * @return position on Field
 	 */
-	public String position(String iD){
-			
-		return;
-		}
+	public abstract String position(String iD);
 	
 }
 

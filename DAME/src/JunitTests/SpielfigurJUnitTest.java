@@ -31,16 +31,15 @@ public class SpielfigurJUnitTest {
 	 * @param TokenArray Array of Tokens
 	 * @param x Token in Array
 	 * @param farbenEnum.black 
-	 * @return Test passed if colour white, Test failed ("false") if colour black
 	 */
 	@Test
-	public boolean ColourOfPlayer(){
-		/*if(TokenArray[i] < (TokenArray.length/2)){
+	public void ColourOfPlayer(){
+		boolean a = true;
+		if(TestTokenArray[x] < (TestTokenArray.length/2)){
 			farbenEnum = FarbEnum.white;
-			return true;
-		} else return false;
-		 */	
-		assertEquals(spielstein.colours(TestTokenArray, x, farbenEnum.black));
+			a = true;
+		} else a =false;
+		assertTrue(a);
 }
 }
 
