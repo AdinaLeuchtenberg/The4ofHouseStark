@@ -11,6 +11,10 @@ public class Spielbrett {
 		createSpielbrett();
 	}
 	
+	/**
+	 * creates a board with ids and colour
+	 * @return returns the board
+	 */
 	public Spielfeld[][] createSpielbrett() {
 	
 		FarbEnum black = FarbEnum.black;
@@ -28,14 +32,29 @@ public class Spielbrett {
 		return board;
 	}
 	
-	public static String indexToId(int i, int j) {
+	/**
+	 * Method to convert from the indexes to the Id
+	 * @param i row of the id
+	 * @param j column of the id
+	 * @return return a string of the id
+	 */
+	public String indexToId(int i, int j) {
 		String indexToId = new String();
 		indexToId = String.valueOf((char) (108 - i) + String.valueOf(j + 1));
 		return indexToId;
 	}
 	
-	
-	public static void main(String[] args) {
-		System.out.println(indexToId(1,1));
+	/**
+	 * Method to convert from the Id to indexes
+	 * @param id the id which should be converted
+	 * @return return an array, position 0 is the row and 1 is the column of which the id is in
+	 */
+	public int[] idToIndex(String id) {
+		int[] idToIndex = new int[2];
+		int i = 108 - id.charAt(0);
+		int j = id.charAt(1) - 49;
+		idToIndex[0] = i;
+		idToIndex[1] = j;
+		return idToIndex;
 	}
 }
