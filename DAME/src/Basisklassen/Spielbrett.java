@@ -27,4 +27,15 @@ public class Spielbrett {
 		}
 		return board;
 	}
+	
+	public static String indexToId(int i, int j) {
+		String indexToId = new String();
+		indexToId = String.valueOf((char) (108 - i) + String.valueOf(j + 1));
+		return indexToId;
+	}
+	
+	
+	public static void main(String[] args) {
+		System.out.println(indexToId(1,1));
+	}
 }
