@@ -3,6 +3,7 @@ package Basisklassen;
 import java.util.ArrayList;
 
 import ExtraKlassen.FarbEnum;
+import SpielKlassen.iBediener;
 
 /**
  * class Spieler
@@ -18,7 +19,7 @@ import ExtraKlassen.FarbEnum;
 //   this.ki = ki;
 //}
 
-public class Spieler {
+public class Spieler implements iBediener {
 	
 	private String spielerName;
 	private FarbEnum farbEnum;
