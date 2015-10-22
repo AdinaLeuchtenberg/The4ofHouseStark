@@ -46,8 +46,8 @@ public class SpielbrettJunitTest {
 	 */
 	@Test
 	public void rightFieldId() {
-		String[][] fieldId = board.getNewId();
-		assertArrayEquals(fieldId, testBoard.testArray());
+		String[][] fieldId = Spielbrett.newId;
+		assertArrayEquals(testBoard.testArray(),fieldId);
 	}
 	
 	/**
@@ -55,8 +55,8 @@ public class SpielbrettJunitTest {
 	 */
 	@Test
 	public void rightFieldColour() {
-		FarbEnum[][] fieldColour = board.getFarbEnum();
-		assertArrayEquals(fieldColour, testBoard.colourArray());
+		FarbEnum[][] fieldColour = Spielbrett.getFarbEnum();
+		assertArrayEquals(testBoard.colourArray(), fieldColour );
 	}
 	
 
