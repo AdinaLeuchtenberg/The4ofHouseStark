@@ -5,7 +5,7 @@ import ExtraKlassen.FarbEnum;
 
 public class Spielbrett {
 	private Spielfeld[][] board = new Spielfeld[12][12];
-	String id = new String();
+	static String id = new String();
 	
 	public Spielbrett(){
 		createSpielbrett();
@@ -56,5 +56,17 @@ public class Spielbrett {
 		idToIndex[0] = i;
 		idToIndex[1] = j;
 		return idToIndex;
+	}
+	
+	@Override
+	public String toString() {
+		String boardString = "";
+		for(int i = 0; i < this.board.length; i++) {
+			for(int j = 0; j < this.board[i].length; j++) {
+				boardString += board[i][j].getID() + " ";
+			}
+			boardString += "\n";
+		}
+		return boardString;
 	}
 }
