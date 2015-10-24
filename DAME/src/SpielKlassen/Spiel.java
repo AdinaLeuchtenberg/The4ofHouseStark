@@ -9,7 +9,10 @@ public class Spiel {
 
 	private Spielbrett map;
 	private Spielfigur token;
-	private Spieler player;
+	private PlayerEnum player;
+	private enum PlayerEnum{
+		ONE,TWO;
+	}
 	
 	public Spiel(){
 		map = new Spielbrett();
@@ -24,5 +27,17 @@ public class Spiel {
 			
 		}
 		return Spielfigur.setPosition(iD);
+	}
+	
+	private void changePlayer(){
+		if (player==PlayerEnum.ONE){
+			player=PlayerEnum.TWO;
+		}
+		else if (player==PlayerEnum.TWO){
+			player=PlayerEnum.ONE;
+		}
+		else{
+			System.out.println("Error: no player selected");
+		}
 	}
 }
