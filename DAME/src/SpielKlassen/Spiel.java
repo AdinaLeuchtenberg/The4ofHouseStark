@@ -3,6 +3,7 @@ package SpielKlassen;
 import Basisklassen.Spielbrett;
 import Basisklassen.Spieler;
 import Basisklassen.Spielfigur;
+import ExtraKlassen.FarbEnum;
 
 public class Spiel {
 
@@ -15,7 +16,13 @@ public class Spiel {
 		
 	}
 	
-	public String move(){
-		return;
+	public String move(boolean dame, String position, Spielbrett map){
+		dame = false;
+		
+		if(){
+			
+			
+		}
+		return Spielfigur.setPosition(iD);
 	}
 }
