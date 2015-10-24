@@ -23,12 +23,16 @@ public class Spielbrett {
 		for(int i = 0; i < board.length; i++) {
 			for(int j = 0; j < board[i].length; j++) {
 				id = String.valueOf((char)(108 - i) + String.valueOf(j + 1));
-				if((i + j) % 2 != 0) {
+				if((i + j) % 2 == 0) {
 					if(i <= 3) {
-					board[i][j] = new Spielfeld(black, id, new Spielfigur());
-					} else 
+					board[i][j] = new Spielfeld(black, id, new Spielfigur(id, black));
+					} else if(i >= 8) {
+						board[i][j] = new Spielfeld(black, id, new Spielfigur(id, white));
+					} else {
+						board[i][j] = new Spielfeld(black, id, null);
+					}
 				} else {
-					board[i][j] = new Spielfeld(white, id);
+					board[i][j] = new Spielfeld(white, id, null);
 				}
 			}
 		}
@@ -63,26 +67,31 @@ public class Spielbrett {
 	
 	@Override
 	public String toString() {
+		FarbEnum spielfigurFarbe = FarbEnum.black;
 		String boardString = "";
-		//="1 2 3 4 5 6 7 8 9 10 11 12" + "\n";
-		int count = 1;
 		for(int i = 0; i < this.board.length; i++) {
 			boardString += (char) (108 - i) + " ";
-			for(int j = 0; j < this.board[i].length; j++) {
-				if(i == 0) {
-					boardString += count;
-					count++;
+			for(int j = 0; j < this.board[i].length; j++) {	
+				boardString += "[";
+				try{
+				spielfigurFarbe = board[i][j].getSpielfigur().getFarbenEnum();
 				}
-				if(i == 11) {
-					boardString += count;
-					count++;
+				catch (NullPointerException e){
+					if(spielfigurFarbe == null) {
+						boardString += "  ";
+					} else if(spielfigurFarbe == FarbEnum.black ) {
+						boardString += "0";
+					} else 	if(spielfigurFarbe == FarbEnum.white ) {
+						boardString += "1";
+					} 
 				}
-
-				boardString += board[i][j].getID() + " ";
+				boardString += "]" + " ";
+				
+				//+ board[i][j].getID() + " ]" + " ";	
 			}
-			boardString += (char) (108 - i) + "\n";
+			boardString += (char) (108 - i) + "\n";		
+
 		}
-		//boardString += "1 2 3 4 5 6 7 8 9 10 11 12";
 		return boardString;
 	}
 }
