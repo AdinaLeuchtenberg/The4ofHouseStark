@@ -19,11 +19,14 @@ public class Spielbrett {
 	
 		FarbEnum black = FarbEnum.black;
 		FarbEnum white = FarbEnum.white;
+		
 		for(int i = 0; i < board.length; i++) {
 			for(int j = 0; j < board[i].length; j++) {
 				id = String.valueOf((char)(108 - i) + String.valueOf(j + 1));
 				if((i + j) % 2 != 0) {
-					board[i][j] = new Spielfeld(black, id);
+					if(i <= 3) {
+					board[i][j] = new Spielfeld(black, id, new Spielfigur());
+					} else 
 				} else {
 					board[i][j] = new Spielfeld(white, id);
 				}
@@ -61,12 +64,25 @@ public class Spielbrett {
 	@Override
 	public String toString() {
 		String boardString = "";
+		//="1 2 3 4 5 6 7 8 9 10 11 12" + "\n";
+		int count = 1;
 		for(int i = 0; i < this.board.length; i++) {
+			boardString += (char) (108 - i) + " ";
 			for(int j = 0; j < this.board[i].length; j++) {
+				if(i == 0) {
+					boardString += count;
+					count++;
+				}
+				if(i == 11) {
+					boardString += count;
+					count++;
+				}
+
 				boardString += board[i][j].getID() + " ";
 			}
-			boardString += "\n";
+			boardString += (char) (108 - i) + "\n";
 		}
+		//boardString += "1 2 3 4 5 6 7 8 9 10 11 12";
 		return boardString;
 	}
 }
