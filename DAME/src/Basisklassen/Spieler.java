@@ -19,7 +19,7 @@ import SpielKlassen.iBediener;
 //   this.ki = ki;
 //}
 
-public class Spieler implements iBediener {
+public class Spieler {
 	
 	private String spielerName;
 	private FarbEnum farbEnum;

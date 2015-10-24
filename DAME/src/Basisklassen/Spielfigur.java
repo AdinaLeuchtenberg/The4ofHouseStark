@@ -1,5 +1,7 @@
 package Basisklassen;
 
+import java.lang.reflect.Field;
+
 import ExtraKlassen.FarbEnum;
 
 /**
@@ -10,6 +12,7 @@ public class Spielfigur {
 	
 	private String position;
 	protected int [] TokenArray = new int[24];
+	private Spielfigur token;
 	private FarbEnum farbenEnum;
 	private Spielbrett map;
 	
@@ -47,8 +50,18 @@ public class Spielfigur {
 	 * @param iD position on Field
 	 * @return position on Field
 	 */
-	public String position(String iD) {
+	public String position(String iD, Spielfigur token) {
+		map.createSpielbrett()Spielfigur.setToken(token);
+		
 		return null;
+	}
+
+	public Spielfigur getToken() {
+		return token;
+	}
+
+	public void setToken(Spielfigur token) {
+		this.token = token;
 	}
 	
 }
