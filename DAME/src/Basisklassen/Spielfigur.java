@@ -9,10 +9,7 @@ import ExtraKlassen.FarbEnum;
 public class Spielfigur {
 	
 	private String position;
-	protected int [] TokenArray = new int[48];
-	private Spielfigur token;
 	private FarbEnum farbenEnum;
-	private Spielbrett map;
 	
 	/**
 	 * constructor sets position 
@@ -32,32 +29,6 @@ public class Spielfigur {
 		this.position = position;
 	}
 	
-	/**
-		* @param playerArray Amount of Tokens, i Token in Array, FarbEnum colour
-		* @return return colour of token
-	*/
-	public FarbEnum colours( int [] TokenArray, int i, FarbEnum farbenEnum){
-		
-	if(TokenArray[i] > (TokenArray.length/2)){
-		farbenEnum = FarbEnum.black;
-	}
-	else farbenEnum = FarbEnum.white;
-	return farbenEnum;
-	}
-	
-	/**
-	 * @param iD position on Field
-	 * @return position on Field
-	 */
-
-	public Spielfigur getToken() {
-		return token;
-	}
-
-	public void setToken(Spielfigur token) {
-		this.token = token;
-	}
-
 	public FarbEnum getFarbenEnum() {
 		return farbenEnum;
 	}
