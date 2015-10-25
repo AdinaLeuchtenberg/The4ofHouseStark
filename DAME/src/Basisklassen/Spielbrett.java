@@ -11,7 +11,7 @@ public class Spielbrett {
 	}
 
 	/**
-	 * creates a board with ids and colour
+	 * creates a board with ids, colour and the starting condition of the figures
 	 * 
 	 * @return returns the board
 	 */
