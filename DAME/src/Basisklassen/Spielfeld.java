@@ -22,20 +22,23 @@ public Spielfeld(FarbEnum y,String x,Spielfigur figur){
 	this.ID = x;
 	this.spielfigur = figur;
 }
-public Spielfeld(FarbEnum y,String x){
-	this.color = y;
-	this.ID = x;
+
+public void setSpielfigur(Spielfigur figur){
+	this.spielfigur= figur;
 }
 
+public Spielfigur getSpielfigur(){
+	return this.spielfigur;
+}
 public String getID(){
 	return this.ID;
 }
 public FarbEnum getColor(){
 	return this.color;
 }
-public boolean FeldBesetzt(){
+public boolean fieldBesetzt(){
 	boolean besetzt= true;
-	while (this.spielfigur == null){
+	if (this.spielfigur == null){
 		besetzt= false;
 	}return besetzt;
 }
