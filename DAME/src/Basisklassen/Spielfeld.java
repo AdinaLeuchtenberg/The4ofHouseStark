@@ -22,6 +22,10 @@ public Spielfeld(FarbEnum y,String x,Spielfigur figur){
 	this.ID = x;
 	this.spielfigur = figur;
 }
+public Spielfeld(FarbEnum y,String x){
+	this.color = y;
+	this.ID = x;
+}
 
 public String getID(){
 	return this.ID;
