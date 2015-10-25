@@ -52,12 +52,12 @@ public class SpielbrettJunitTest {
 	
 	/**
 	 * Test to check if the board has the right colours
-	 */
+	 *
 	@Test
 	public void rightFieldColour() {
 		FarbEnum[][] fieldColour = Spielbrett.getFarbEnum();
 		assertArrayEquals(testBoard.colourArray(), fieldColour );
-	}
+	}*/
 	
 
 }
