@@ -5,7 +5,7 @@ import Basisklassen.Spieler;
 import Basisklassen.Spielfigur;
 import ExtraKlassen.FarbEnum;
 
-public class Spiel {
+public class Spiel implements iBediener {
 
 	private Spielbrett map;
 	private Spielfigur token;
