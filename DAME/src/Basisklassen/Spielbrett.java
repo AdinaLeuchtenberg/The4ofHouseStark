@@ -72,6 +72,9 @@ public class Spielbrett {
 		return idToIndex;
 	}
 
+	public Spielfeld getField(int i, int j) {
+		return this.board[i][j];
+	}
 
 	@Override
 	public String toString() {

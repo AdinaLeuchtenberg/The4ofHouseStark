@@ -1,5 +1,9 @@
 package SpielKlassen;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import Basisklassen.Spielbrett;
 import Basisklassen.Spieler;
 import Basisklassen.Spielfigur;
@@ -88,9 +92,19 @@ public FarbEnum[] getFarbTokenArray(){
 			System.out.println("Error: no player selected");
 		}
 	}
+	
+	
 	@Override
-	public void reader() {
-		// TODO Auto-generated method stub
+	public String reader() {
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		String input = "";
+		try {
+			input = in.readLine();
+		} catch (IOException e) {
+			System.out.println("Eingabe konnte nicht gelesen werde");
+		}
+		return input;
+	}
 		
 	}
 }

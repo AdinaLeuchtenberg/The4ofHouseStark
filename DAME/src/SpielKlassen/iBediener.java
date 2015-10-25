@@ -2,7 +2,7 @@ package SpielKlassen;
 
 public interface iBediener {
 	
-	public void reader();
+	public String reader();
 	
 	
 	/*
