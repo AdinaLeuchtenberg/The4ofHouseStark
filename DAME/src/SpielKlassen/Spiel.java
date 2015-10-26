@@ -67,20 +67,21 @@ private void gameLoop() {
 				name2 = reader();
 			}
 			player2 = new Spieler(name2, FarbEnum.black);
-			System.out.println(player1.getSpielerName() + "is player one" + "and has colour" + player1.getFarbEnum());
-			System.out.println(player2.getSpielerName() + "is player two" + "and has colour" + player2.getFarbEnum());
+			System.out.println(player1.getSpielerName() + " is player one and has colour " + player1.getFarbEnum());
+			System.out.println(player2.getSpielerName() + " is player two and has colour " + player2.getFarbEnum());
 			
 		break;
 		case "start":
 			if(!started) {
 				player = player1;
 				started = true;
+				System.out.println(map.toString());
 			} else {
 				System.out.println("game has already started");
 			}
 		break;
 		
-		case "startTurn":
+		case "startturn":
 			System.out.println("enter the coordinate of the token you want to move + coordinate of the field you want to move to; e.g.: b3 c4");
 			String coordinates = reader();
 			String nowCoordinate = coordinates.substring(0, 2);
