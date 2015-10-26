@@ -397,7 +397,7 @@ private void changeToDame(String ziel){
 			//besetztes feld farbe des gegners?
 			if(map.getField(posNext[0], posNext[1]).getSpielfigur.getColor() != player.getFarbEnum()) {
 				bullies.add(map.getField(posNow[0], posNow[1]).getSpielfigur);
-				
+				//TODO 
 			}
 		}
 		
