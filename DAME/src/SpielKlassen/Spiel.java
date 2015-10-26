@@ -150,6 +150,35 @@ private void gameInstruction() {
 	}
 	
 	/**
+	 * method to test who is winner
+	 */
+	
+	private boolean wins(){
+		int spieler1=0;
+		int spieler2=0;
+	 
+		for(int i=0; i<TokenArray.length/2; i++){
+			if(TokenArray[i]!=null){
+				spieler1++;	
+			}
+		}
+		for(int j=TokenArray.length/2; j<48; j++){
+			if(TokenArray[j]!=null){
+				spieler2++;
+			}
+		}
+		if(spieler1==0){
+			System.out.println(player2.getSpielerName() + "has won!");
+			return true;
+		}
+		else if (spieler2==0){
+			System.out.println(player1.getSpielerName() + "has won!");
+			return true;
+		}
+		else return false;
+	}
+	
+	/**
 	 * method to save the tokens which have to move to beat the other player
 	 * @return array of token which have to move to beat the other player
 	 */
