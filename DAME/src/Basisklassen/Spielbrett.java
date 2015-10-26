@@ -27,9 +27,9 @@ public class Spielbrett {
 					if (i > 3 & i < 8) {
 						board[i][j] = new Spielfeld(black, id, null);
 					} else if (i <= 3) {
-						board[i][j] = new Spielfeld(black, id, new Spielfigur(id, black));
+						board[i][j] = new Spielfeld(black, id, new Spielfigur(id, black, false));
 					} else if (i >= 8) {
-						board[i][j] = new Spielfeld(black, id, new Spielfigur(id, white));
+						board[i][j] = new Spielfeld(black, id, new Spielfigur(id, white, false));
 					}
 				} else {
 					board[i][j] = new Spielfeld(white, id, null);
@@ -75,6 +75,8 @@ public class Spielbrett {
 	public Spielfeld getField(int i, int j) {
 		return this.board[i][j];
 	}
+	
+
 
 	@Override
 	public String toString() {

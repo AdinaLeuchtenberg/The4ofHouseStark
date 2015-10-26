@@ -99,7 +99,7 @@ public FarbEnum[] getFarbTokenArray(){
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		String input = "";
 		try {
-			input = in.readLine();
+			input = in.readLine().toLowerCase();
 		} catch (IOException e) {
 			System.out.println("Eingabe konnte nicht gelesen werde");
 		}
