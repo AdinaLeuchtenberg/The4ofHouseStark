@@ -23,6 +23,7 @@ public class Spiel implements iBediener {
 	
 	public Spiel(){
 		map = new Spielbrett();
+		gameLoop();
 		
 	}
 	/**
@@ -383,25 +384,6 @@ private void changeToDame(String ziel){
 			return true;
 		}
 		else return false;
-	}
-	
-	/**
-	 * method to save the tokens which have to move to beat the other player
-	 * @return array of token which have to move to beat the other player
-	 */
-	private ArrayList<Spielfigur> getFigurenDieSchlagenKoennen() {
-		ArrayList<Spielfigur> bullies = new ArrayList<Spielfigur>();
-		
-		//ist feld besetzt?
-		if(map.getField(posNext[0], posNext[1]).istBesetzt()) {
-			//besetztes feld farbe des gegners?
-			if(map.getField(posNext[0], posNext[1]).getSpielfigur.getColor() != player.getFarbEnum()) {
-				bullies.add(map.getField(posNow[0], posNow[1]).getSpielfigur);
-				//TODO 
-			}
-		}
-		
-		return bullies;
 	}
 	
 	@Override

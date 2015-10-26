@@ -1,5 +1,7 @@
 package Basisklassen;
 
+import java.util.ArrayList;
+
 import ExtraKlassen.FarbEnum;
 
 public class Spielbrett {
@@ -76,6 +78,47 @@ public class Spielbrett {
 		return this.board[i][j];
 	}
 	
+	/**
+	 * method to save the tokens which have to move to beat the other player
+	 * 
+	 * @return array of token which have to move to beat the other player
+	 */
+	public ArrayList<Spielfigur> getFigurenDieSchlagenKoennen() {
+		ArrayList<Spielfigur> bullies = new ArrayList<Spielfigur>();
+		for (int i = 0; i < this.board.length; i++) {
+			for (int j = 0; j < this.board[i].length; j++) {
+				// alle Felder die besetzt sind
+				if (board[i][j].fieldBesetzt()) {
+					//ist figur dame?
+					if(!board[i][j].getSpielfigur().getDame()){
+						// alle rechtenfelder die besetzt sind
+						if (board[i + 1][j + 1].fieldBesetzt()) {
+							// hat Spielfigur auf dem nächsten Feld andere farbe als auf jetzigem feld?
+							if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j + 1].getSpielfigur().getFarbenEnum()) {
+								//feld zweil felder weiter besetz?
+								if (!board[i + 2][j + 2].fieldBesetzt()) {
+									bullies.add(board[i][j].getSpielfigur());
+								}
+							}
+						}
+							// alle linken felder die besetzt sind
+							else if (board[i + 1][j - 1].fieldBesetzt()) {
+								// hat Spielfigur auf dem nächsten Feld andere farbe als auf jetzigem feld?
+								if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j - 1].getSpielfigur().getFarbenEnum()) {
+									//feld zwei felder weiter links besetz?
+									if (!board[i + 2][j - 2].fieldBesetzt()) {
+										bullies.add(board[i][j].getSpielfigur());
+									}
+								}
+							}
+					} 
+					//spielfigur ist dame
+					else 
+				}
+			}
+		}
+		return bullies;
+	}
 
 
 	@Override
