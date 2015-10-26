@@ -10,13 +10,15 @@ public class Spielfigur {
 	
 	private String position;
 	private FarbEnum farbenEnum;
+	private boolean dame;
 	
 	/**
 	 * constructor sets position 
 	 */
-	public Spielfigur(String position, FarbEnum farbenEnum){
+	public Spielfigur(String position, FarbEnum farbenEnum, boolean dame){
 		this.setPosition(position);
 		this.setFarbenEnum(farbenEnum);
+		this.setDame(dame);
 		
 	}
 	
@@ -35,6 +37,14 @@ public class Spielfigur {
 
 	public void setFarbenEnum(FarbEnum farbenEnum) {
 		this.farbenEnum = farbenEnum;
+	}
+
+	public boolean getDame() {
+		return dame;
+	}
+
+	public void setDame(boolean dame) {
+		this.dame = dame;
 	}
 	
 }
