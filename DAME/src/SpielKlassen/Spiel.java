@@ -3,6 +3,7 @@ package SpielKlassen;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 import Basisklassen.Spielbrett;
 import Basisklassen.Spieler;
@@ -14,11 +15,11 @@ public class Spiel implements iBediener {
 
 	private Spielbrett map;
 	private Spielfigur token;
-	private PlayerEnum player;
+	private Spieler player1;
+	private Spieler player2;
+	private Spieler player;
 	private FarbEnum [] TokenArray = new FarbEnum[48];
-	private enum PlayerEnum{
-		ONE,TWO;
-	}
+
 	
 	public Spiel(){
 		map = new Spielbrett();
@@ -39,60 +40,133 @@ public FarbEnum[] getFarbTokenArray(){
 	return TokenArray;
 }
 	
-	public String move(boolean dame, String position, String iDFeld){
-		dame = false;
-		int [] posNow = map.idToIndex(position);
-		int [] posNext = map.idToIndex(iDFeld);
+/**
+ * method which manages the game from beginning to end
+ */
+private void gameLoop() {
+	boolean started = false;
+	this.gameInstruction();
+	String readIn = "";
+	do{
+		readIn = reader();
+		switch(readIn) {
+		case "add":
+			System.out.println("Please enter the name of the first player:");
+			String name1 = reader();
+			if(name1 == null) {
+				System.err.println("please enter a name");
+				name1 = reader();
+			}
+			player1 = new Spieler(name1, FarbEnum.white);
+			
+			System.out.println("Please enter the name of the second player:");
+			String name2 = reader();
+			if(name2 == null) {
+				System.err.println("please enter a name");
+				name2 = reader();
+			}
+			player2 = new Spieler(name2, FarbEnum.black);
+			System.out.println(player1.getSpielerName() + "is player one" + "and has colour" + player1.getFarbEnum());
+			System.out.println(player2.getSpielerName() + "is player two" + "and has colour" + player2.getFarbEnum());
+			
+		break;
+		case "start":
+			if(!started) {
+				player = player1;
+				started = true;
+			} else {
+				System.out.println("game has already started");
+			}
+		break;
 		
-		// für weißer spieler
-		if(map.getField([posNext[0]][posNext[1]]).getColor() == FarbEnum.black){ 	// farb test 
-			if(posNext[0]<= 11 && posNext[0]>=0){ // im Feld (buchstaben)
-				if(posNext[1]<= 11 && posNext[1]>=0){ // im feld (zahlen)
-					if(posNext[0]== posNow[0]+1){ // ein feld weiter (nach oben)
-						if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){ // Feld nach rechts oder links 
-							if(map.getField([posNext[0]][posNext[1]]).fieldBesetzt()){ //Feld besetzt?
-								if(map.getField([posNext[0]][posNext[1]]).getSpielfigur.getFarbenEnum()== FarbEnum.black ){	// Ist Spielfigur schwarz somit Gegnerfarbe
-									if(posNext[0]-1 <= 11 && posNext[0]-1 >=0){	// Ist neues Spielfeld im Feld, nächste reihe 
-										if((posNext[1]+1 <= 11 && posNext[1]+ 1 >=0)||(posNext[1]-1 <= 11 && posNext[1]- 1 >=0)){ // NeuesSpielfeld ist im Brett um schlagen möglich zu machen 
-											if((map.getField([posNext[0]+1][posNext[1]+1]).fieldBesetzt()) || (map.getField([posNext[0]+1][posNext[1]-1]).fieldBesetzt())){
-												map.getField([posNext[0]][posNext[1]]).setSpielfigur(null);	// setzt das Feld null auf dem die Spielfigur jetzt saß
-													int j=24;
-													while(TokenArray[j]= null){		//löscht den Token aus den FarbTokenArray
-														j++;
-													} TokenArray[j] =null;
-													 //... setzt die Spielfigur aufs neue Feld + muss schlagen wenn möglich!!
-													
-												}
-												
-											}
-										}
-									}
-								}
-							}
-							
-						}
-					}
+		case "startTurn":
+			System.out.println("enter the coordinate of the token you want to move + coordinate of the field you want to move to; e.g.: b3 c4");
+			String coordinates = reader();
+			String nowCoordinate = coordinates.substring(0, 2);
+			String nextCoordinate = coordinates.substring(3);
+			move(nowCoordinate, nextCoordinate);
+			boolean wins = wins();
+			if(wins) {
+				started = false;
+				System.out.println("Enter 'start' if you want to play another game or 'exit' if you want to end");
+				readIn = reader();
+				if(readIn == "exit") {
+					System.out.println("Thank you for playing");
+					System.exit(0);
+				} else if(readIn == "start") {
+						gameLoop();
+				} else {
+					System.err.println("invalid input");
 				}
+			} else {
+				System.out.println(map.toString());
+			}
+		break;
+			
+		case "endturn":
+			changePlayer();
+			if(player == player1) {
+				System.out.println(player1.getSpielerName() + "'s turn");
+			}
+			else {
+				System.out.println(player2.getSpielerName() + "'s turn");
+			}
+		break;
+			
+		case "exit":
+			System.out.println("Thank you for playing");
+			System.exit(0);
+		break;
+		
+		default:
+			System.err.println("invalid input");
+			gameInstruction();
+		 
+		
+	}
+	}while (!readIn.equals( "exit"));
+	
+}
+private void gameInstruction() {
+	String instructions = "Instructions: \n";
+	instructions += "You can enter the following commands; \n to execute press 'Enter' \n";
+	instructions += "add - adds a new Player \n";
+	instructions += "start - starts the game \n";
+	instructions += "startTurn - to start you turn \n ";
+	instructions += "endTurn - ends the current turn so that the other players turn begins \n";
+	instructions += "exit - ends the game";
+	System.out.println(instructions);
+	
+	}
+	
+	private void changePlayer() {
+		if (player == player1) {
+			player = player2;
+		}
+		else if (player == player2) {
+			player = player1;
+		}
+
+	}
+	
+	/**
+	 * method to save the tokens which have to move to beat the other player
+	 * @return array of token which have to move to beat the other player
+	 */
+	private ArrayList<Spielfigur> getFigurenDieSchlagenKoennen() {
+		ArrayList<Spielfigur> bullies = new ArrayList<Spielfigur>();
+		
+		//ist feld besetzt?
+		if(map.getField(posNext[0], posNext[1]).istBesetzt()) {
+			//besetztes feld farbe des gegners?
+			if(map.getField(posNext[0], posNext[1]).getSpielfigur.getColor() != player.getFarbEnum()) {
+				bullies.add(map.getField(posNow[0], posNow[1]).getSpielfigur);
 				
 			}
-			
-			
 		}
-		return ;
+		
+		return bullies;
 	}
-	
-	private void changePlayer(){
-		if (player==PlayerEnum.ONE){
-			player=PlayerEnum.TWO;
-		}
-		else if (player==PlayerEnum.TWO){
-			player=PlayerEnum.ONE;
-		}
-		else{
-			System.out.println("Error: no player selected");
-		}
-	}
-	
 	
 	@Override
 	public String reader() {
@@ -106,5 +180,5 @@ public FarbEnum[] getFarbTokenArray(){
 		return input;
 	}
 		
-	}
 }
+
