@@ -141,7 +141,7 @@ public void move(String start, String ziel){
 	int[] posNow = map.idToIndex(start);
 	int[] posNext = map.idToIndex(ziel);
 
-	if(zielIstGueltig(posNow) && andererMussPusten(posNow)){
+	if(zielIstGueltig(posNext) && andererMussPusten(posNow)){
 		throw new RuntimeException("Zug nicht durchführbar, muss pusten");
 	}
 	boolean istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
@@ -184,7 +184,7 @@ private boolean zielIstGueltig(int[] posNext){
 					return true;
 				}  
 		}
-			// geht nach oben als Dame wenn Stein schlagbar ist:
+			// geht nach oben rechts als Dame wenn schlagbarer Stein im Weg ist:
 			for(int h=1; h<10;h++){		
 			if(posNext[0]==posNow[0]+h){		// buchstabe +1
 						if(posNext[1] == posNow[1]+h){	// zahl+1
@@ -199,19 +199,24 @@ private boolean zielIstGueltig(int[] posNext){
 				}
 			}
 		}
-			
-							 for(int i=1; i<10;i++){
+			}				
+							
+						 for(int i=1; i<10;i++){
+								if(posNext[0]==posNow[0]+i){		// buchstabe +1
+								if(posNext[1] == posNow[1]-i){	// zahl-1
 								if(map.getField(posNow[0]+i, posNow[1]-i).fieldBesetzt()){	// ist bestetzt?
 								if(map.getField(posNow[0]+i, posNow[1]-i).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
 									if(!map.getField(posNow[0]+i+1, posNow[1]+i-1).fieldBesetzt()){
 									if(posNext[0] == posNext[0]+i && posNext[1]==posNext[1]-i){ // test links eins weiter nach oben
 								return true;
 							}
-								}
-							}
-							}
-							}
-							}
+						}
+					}
+				}
+			}
+		}
+	}
+							
 				// geht nach unten als Dame wenn Stein schlagbar ist:
 				for(int j=1; j<10;j++){
 				if(posNext[0]==posNow[0]-j){ // buchstabe -1
@@ -221,26 +226,29 @@ private boolean zielIstGueltig(int[] posNext){
 									if(!map.getField(posNow[0]+j-1, posNow[1]+j+1).fieldBesetzt()){
 									if(posNext[0] == posNext[0]-j && posNext[1]==posNext[1]+j){	// test rechts eins weiter nach unten 
 								return true;
-							} 
+									} 
 								}
 							}
 						}
+					}
 				}
-				}
-				}
-							 for(int k=1; k<10;k++){
-								if(map.getField(posNow[0]-k, posNow[1]-k).fieldBesetzt()){	// ist bestetzt?
-								if(map.getField(posNow[0]-1, posNow[1]-k).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
-									if(!map.getField(posNow[0]+k-1, posNow[1]+k-1).fieldBesetzt()){
-									if(posNext[0] == posNext[0]-k && posNext[1]==posNext[1]-k){	// test links eins weiter nach unten
-								return true;
-								}
+			}
+						for(int k=1; k<10;k++){
+							if(posNext[0]==posNow[0]-k){ // buchstabe -1
+								if(posNext[1] == posNow[1]-k){	// zahl-1
+									if(map.getField(posNow[0]-k, posNow[1]-k).fieldBesetzt()){	// ist bestetzt?
+										if(map.getField(posNow[0]-1, posNow[1]-k).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
+											if(!map.getField(posNow[0]+k-1, posNow[1]+k-1).fieldBesetzt()){
+												if(posNext[0] == posNext[0]-k && posNext[1]==posNext[1]-k){	// test links eins weiter nach unten
+													return true;
+												}
+											}
+										}
+									}
+								}	
 							}
-							}
-							}
-							}
-	
-	}
+						}
+					}
 		if(posNext[0]== posNow[0]+1){ // ein feld weiter (nach oben) // buchstaben nach oben 
 			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){ // Feld nach rechts oder links 
 				return true;
