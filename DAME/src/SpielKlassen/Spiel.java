@@ -149,7 +149,7 @@ public void move(String start, String ziel){
 	int[] posNow = map.idToIndex(start);
 	int[] posNext = map.idToIndex(ziel);
 
-	if(zielIstGueltig(posNow) && andererMussPusten(posNow)){
+	if(zielIstGueltig(posNext) && andererMussPusten(posNow)){
 		throw new RuntimeException("Zug nicht durchführbar, muss pusten");
 	}
 	boolean istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
@@ -192,7 +192,7 @@ private boolean zielIstGueltig(int[] posNext){
 					return true;
 				}  
 		}
-			// geht nach oben als Dame wenn Stein schlagbar ist:
+			// geht nach oben rechts als Dame wenn schlagbarer Stein im Weg ist:
 			for(int h=1; h<10;h++){		
 			if(posNext[0]==posNow[0]+h){		// buchstabe +1
 						if(posNext[1] == posNow[1]+h){	// zahl+1
@@ -207,7 +207,7 @@ private boolean zielIstGueltig(int[] posNext){
 				}
 			}
 		}
-			
+			}				
 							 for(int i=1; i<10;i++){
 								if(map.getField(posNow[0]+i, posNow[1]-i).fieldBesetzt()){	// ist bestetzt?
 								if(map.getField(posNow[0]+i, posNow[1]-i).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
@@ -219,7 +219,7 @@ private boolean zielIstGueltig(int[] posNext){
 							}
 							}
 							}
-							}
+							
 				// geht nach unten als Dame wenn Stein schlagbar ist:
 				for(int j=1; j<10;j++){
 				if(posNext[0]==posNow[0]-j){ // buchstabe -1
