@@ -90,22 +90,14 @@ private void gameLoop() {
 			boolean wins = wins();
 			if(wins) {
 				started = false;
-				System.out.println("Enter 'start' if you want to play another game or 'exit' if you want to end");
-				readIn = reader();
-				if(readIn == "exit") {
-					System.out.println("Thank you for playing");
-					System.exit(0);
-				} else if(readIn == "start") {
-						gameLoop();
-				} else {
-					System.err.println("invalid input");
-				}
-			} else {
-				System.out.println(map.toString());
+				System.out.println("if you want to exit the game enter 'exit' or follow the insturctions");
+				gameLoop();
+				
 			}
 		break;
 			
 		case "endturn":
+			System.out.println(map.toString());
 			changePlayer();
 			if(player == player1) {
 				System.out.println(player1.getSpielerName() + "'s turn");
@@ -134,7 +126,7 @@ private void gameInstruction() {
 	instructions += "You can enter the following commands; \n to execute press 'Enter' \n";
 	instructions += "add - adds a new Player \n";
 	instructions += "start - starts the game \n";
-	instructions += "startTurn - to start you turn \n ";
+	instructions += "startTurn - to start you turn \n";
 	instructions += "endTurn - ends the current turn so that the other players turn begins \n";
 	instructions += "exit - ends the game";
 	System.out.println(instructions);
