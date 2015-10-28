@@ -342,10 +342,12 @@ private void changeToDame(String ziel){
 				token.setDame(true);
 			}
 		}else {
-			if (posZiel[0]==11){
-			token.setDame(true);
+			if(token.getFarbenEnum() == FarbEnum.white){
+				if (posZiel[0]==11){
+					token.setDame(true);
 		}
 	}
+		}
 }
 
 	private void changePlayer() {
