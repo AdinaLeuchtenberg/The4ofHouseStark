@@ -47,6 +47,7 @@ public FarbEnum[] getFarbTokenArray(){
  */
 private void gameLoop() {
 	boolean started = false;
+	getFarbTokenArray();
 	this.gameInstruction();
 	String readIn = "";
 	do{
