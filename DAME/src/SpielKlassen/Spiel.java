@@ -51,6 +51,7 @@ private void gameLoop() {
 	do{
 		readIn = reader();
 		switch(readIn) {
+		
 		case "add":
 			System.out.println("Please enter the name of the first player:");
 			String name1 = reader();
@@ -58,7 +59,22 @@ private void gameLoop() {
 				System.err.println("please enter a name");
 				name1 = reader();
 			}
-			player1 = new Spieler(name1, FarbEnum.white);
+
+			System.out.println("Please choose your colour");
+			String color= reader();
+			switch(color){
+			case"black":
+				player1 = new Spieler(name1, FarbEnum.black);
+			break;
+			
+			case"white":
+				player1 = new Spieler(name1, FarbEnum.white);
+			break;
+
+			default:
+				System.err.println("Because your input was invalid you get the colour white");
+				player1 = new Spieler(name1, FarbEnum.white);
+			}
 			
 			System.out.println("Please enter the name of the second player:");
 			String name2 = reader();
@@ -66,11 +82,16 @@ private void gameLoop() {
 				System.err.println("please enter a name");
 				name2 = reader();
 			}
-			player2 = new Spieler(name2, FarbEnum.black);
+			if(player1.getFarbEnum()== FarbEnum.black){
+				player2 = new Spieler(name2, FarbEnum.white);
+			}else   player2 = new Spieler(name2, FarbEnum.black);
+
+
 			System.out.println(player1.getSpielerName() + " is player one and has colour " + player1.getFarbEnum());
 			System.out.println(player2.getSpielerName() + " is player two and has colour " + player2.getFarbEnum());
 			
 		break;
+		
 		case "start":
 			if(!started) {
 				player = player1;
