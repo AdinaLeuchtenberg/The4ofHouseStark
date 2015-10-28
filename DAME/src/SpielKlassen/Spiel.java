@@ -281,7 +281,7 @@ private boolean zielIstGueltig(int[] posNext){
 
 			
 private void schlagen(int[] posNow, int[] posNext){
-	//if(token.getDame()){
+	if(token.getDame()){
 		if (zielIstErreichbar(posNext,posNext)){
 			if(!map.getField(posNext[0]+1,posNext[1]+1).fieldBesetzt()){	
 						map.getField(posNext[0],posNext[1]).setSpielfigur(null);
