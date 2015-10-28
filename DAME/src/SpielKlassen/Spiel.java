@@ -329,6 +329,28 @@ private boolean zielIstGueltig(int[] posNext){
 					}
 				}
 				}
+		// geht nach unten(anderer PLAYER) rechts als Stein wenn Stein schlagbar ist:
+		if(posNext[0]==posNow[0]-1){		// buchstabe +1
+			if(posNext[1] == posNow[1]+1){	// zahl+1
+				if(map.getField(posNow[0]-1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
+					if(map.getField(posNow[0]-1, posNow[1]+1).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
+						if(posNext[0] == posNext[0]-1 && posNext[1]==posNext[1]+1){	// test rechts eins weiter nach oben 
+					return true;
+				} 
+			}
+		}
+	}
+		}
+	// geht nach unten(anderer PLAYER) links als Stein wenn Stein schlagbar ist:
+				else{ 
+					if(map.getField(posNow[0]-1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
+					if(map.getField(posNow[0]-1, posNow[1]-1).getSpielfigur().getFarbenEnum()!= player2.getFarbEnum()){ // Gegner ?
+					if(posNext[0] == posNext[0]-1 && posNext[1]==posNext[1]-1){ // test links eins weiter nach oben
+					return true;
+				}
+					}
+				}
+				}
 				}
 		return false;
 	}
