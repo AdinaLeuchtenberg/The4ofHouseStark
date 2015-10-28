@@ -512,17 +512,6 @@ private void changeToDame(String ziel){
 		else return false;
 	}
 	
-	private FarbEnum chosenPlayerColor(FarbEnum color, Spieler player){
-		if (color == color.black){
-			 player = new Spieler(player.getSpielerName(), FarbEnum.black);
-		} 
-		if(color == color.white){
-			player = new Spieler(player.getSpielerName(), FarbEnum.white);
-		}
-		return color;
-		
-	}
-	
 	@Override
 	public String reader() {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
