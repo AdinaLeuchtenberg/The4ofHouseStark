@@ -93,50 +93,68 @@ public class Spielbrett {
 					if (!board[i][j].getSpielfigur().getDame()) {
 						// ist stein schwarz?
 						if (board[i][j].getSpielfigur().getFarbenEnum() == FarbEnum.black) {
-							// alle rechtenfelder die besetzt sind
-							if (board[i + 1][j + 1].fieldBesetzt()) {
-								// hat Spielfigur auf dem nächsten Feld andere farbe als auf
-								// jetzigem feld?
-								if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j + 1].getSpielfigur().getFarbenEnum()) {
-									// feld zweil felder weiter besetz?
-									if (!board[i + 2][j + 2].fieldBesetzt()) {
-										bullies.add(board[i][j].getSpielfigur());
+							// untergrenze board
+							if (i + 2 < board.length) {
+								// rechte Grenze Board?
+								if (j + 2 < board[i].length) {
+									// alle rechtenfelder die besetzt sind
+									if (board[i + 1][j + 1].fieldBesetzt()) {
+										// hat Spielfigur auf dem nächsten Feld andere farbe als auf
+										// jetzigem feld?
+										if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j + 1].getSpielfigur().getFarbenEnum()) {
+											// feld zweil felder weiter besetz?
+											if (!board[i + 2][j + 2].fieldBesetzt()) {
+												bullies.add(board[i][j].getSpielfigur());
+											}
+										}
 									}
 								}
-							}
-							// alle linken felder die besetzt sind
-							else if (board[i + 1][j - 1].fieldBesetzt()) {
-								// hat Spielfigur auf dem nächsten Feld andere farbe als auf
-								// jetzigem feld?
-								if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j - 1].getSpielfigur().getFarbenEnum()) {
-									// feld zwei felder weiter links besetz?
-									if (!board[i + 2][j - 2].fieldBesetzt()) {
-										bullies.add(board[i][j].getSpielfigur());
+								// linke grenze vom board?
+								else if (j - 2 < 0) {
+									// alle linken felder die besetzt sind
+									if (board[i + 1][j - 1].fieldBesetzt()) {
+										// hat Spielfigur auf dem nächsten Feld andere farbe als auf
+										// jetzigem feld?
+										if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j - 1].getSpielfigur().getFarbenEnum()) {
+											// feld zwei felder weiter links besetz?
+											if (!board[i + 2][j - 2].fieldBesetzt()) {
+												bullies.add(board[i][j].getSpielfigur());
+											}
+										}
 									}
 								}
 							}
 						} else
 						// ist stein weiß?
 						if (board[i][j].getSpielfigur().getFarbenEnum() == FarbEnum.white) {
-							// alle rechtenfelder die besetzt sind
-							if (board[i - 1][j + 1].fieldBesetzt()) {
-								// hat Spielfigur auf dem nächsten Feld andere farbe als auf
-								// jetzigem feld?
-								if (board[i][j].getSpielfigur().getFarbenEnum() != board[i - 1][j + 1].getSpielfigur().getFarbenEnum()) {
-									// feld zweil felder weiter besetz?
-									if (!board[i - 2][j + 2].fieldBesetzt()) {
-										bullies.add(board[i][j].getSpielfigur());
+							// ober grenze vom board?
+							if (i - 2 < 0) {
+								// rechte grenze?
+								if (j + 2 < board[i].length) {
+									// alle rechtenfelder die besetzt sind
+									if (board[i - 1][j + 1].fieldBesetzt()) {
+										// hat Spielfigur auf dem nächsten Feld andere farbe als auf
+										// jetzigem feld?
+										if (board[i][j].getSpielfigur().getFarbenEnum() != board[i - 1][j + 1].getSpielfigur().getFarbenEnum()) {
+											// feld zweil felder weiter besetz?
+											if (!board[i - 2][j + 2].fieldBesetzt()) {
+												bullies.add(board[i][j].getSpielfigur());
+											}
+										}
 									}
 								}
-							}
-							// alle linken felder die besetzt sind
-							else if (board[i - 1][j - 1].fieldBesetzt()) {
-								// hat Spielfigur auf dem nächsten Feld andere farbe als auf
-								// jetzigem feld?
-								if (board[i][j].getSpielfigur().getFarbenEnum() != board[i - 1][j - 1].getSpielfigur().getFarbenEnum()) {
-									// feld zwei felder weiter links besetz?
-									if (!board[i - 2][j - 2].fieldBesetzt()) {
-										bullies.add(board[i][j].getSpielfigur());
+								// linke grenze vom board
+								else if (j - 2 < 0) {
+									// alle linken felder die besetzt sind
+									if (board[i - 1][j - 1].fieldBesetzt()) {
+										// hat Spielfigur auf dem nächsten Feld andere farbe als auf
+										// jetzigem feld?
+										if (board[i][j].getSpielfigur().getFarbenEnum() != board[i - 1][j - 1].getSpielfigur().getFarbenEnum()) {
+											// feld zwei felder weiter links besetz?
+											if (!board[i - 2][j - 2].fieldBesetzt()) {
+												bullies.add(board[i][j].getSpielfigur());
+											}
+										}
 									}
 								}
 							}
@@ -144,45 +162,65 @@ public class Spielbrett {
 					}
 					// spielfigur ist dame
 					else {
-						// alle rechten felder oben die besetzt sind
-						if (board[i + 1][j + 1].fieldBesetzt()) {
-							// hat Spielfigur auf dem nächsten Feld andere farbe als auf
-							// jetzigem feld?
-							if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j + 1].getSpielfigur().getFarbenEnum()) {
-								// feld zweil felder weiter besetz?
-								if (!board[i + 2][j + 2].fieldBesetzt()) {
-									bullies.add(board[i][j].getSpielfigur());
+						// untergrenze board
+						if (i + 2 < board.length) {
+							// rechte Grenze Board?
+							if (j + 2 < board[i].length) {
+								// alle rechten felder oben die besetzt sind
+								if (board[i + 1][j + 1].fieldBesetzt()) {
+									// hat Spielfigur auf dem nächsten Feld andere farbe als auf
+									// jetzigem feld?
+									if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j + 1].getSpielfigur().getFarbenEnum()) {
+										// feld zweil felder weiter besetz?
+										if (!board[i + 2][j + 2].fieldBesetzt()) {
+											bullies.add(board[i][j].getSpielfigur());
+										}
+									}
 								}
 							}
-						}
-						// alle linken felder oben die besetzt sind
-						else if (board[i + 1][j - 1].fieldBesetzt()) {
-							// hat Spielfigur auf dem nächsten Feld andere farbe als auf
-							// jetzigem feld?
-							if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j - 1].getSpielfigur().getFarbenEnum()) {
-								// feld zwei felder weiter links besetz?
-								if (!board[i + 2][j - 2].fieldBesetzt()) {
-									bullies.add(board[i][j].getSpielfigur());
-								}
-							}// alle rechtenfelder unten die besetzt sind
-						} else if (board[i - 1][j + 1].fieldBesetzt()) {
-							// hat Spielfigur auf dem nächsten Feld andere farbe als auf
-							// jetzigem feld?
-							if (board[i][j].getSpielfigur().getFarbenEnum() != board[i - 1][j + 1].getSpielfigur().getFarbenEnum()) {
-								// feld zweil felder weiter besetz?
-								if (!board[i - 2][j + 2].fieldBesetzt()) {
-									bullies.add(board[i][j].getSpielfigur());
+							// linke grenze vom board?
+							else if (j - 2 < 0) {
+								// alle linken felder oben die besetzt sind
+								if (board[i + 1][j - 1].fieldBesetzt()) {
+									// hat Spielfigur auf dem nächsten Feld andere farbe als auf
+									// jetzigem feld?
+									if (board[i][j].getSpielfigur().getFarbenEnum() != board[i + 1][j - 1].getSpielfigur().getFarbenEnum()) {
+										// feld zwei felder weiter links besetz?
+										if (!board[i + 2][j - 2].fieldBesetzt()) {
+											bullies.add(board[i][j].getSpielfigur());
+										}
+									}
 								}
 							}
-						}
-						// alle linken felder unten die besetzt sind
-						else if (board[i - 1][j - 1].fieldBesetzt()) {
-							// hat Spielfigur auf dem nächsten Feld andere farbe als auf
-							// jetzigem feld?
-							if (board[i][j].getSpielfigur().getFarbenEnum() != board[i - 1][j - 1].getSpielfigur().getFarbenEnum()) {
-								// feld zwei felder weiter links besetz?
-								if (!board[i - 2][j - 2].fieldBesetzt()) {
-									bullies.add(board[i][j].getSpielfigur());
+							// ober grenze vom board?
+						} else if (i - 2 < 0) {
+							// rechte grenze?
+							if (j + 2 < board[i].length) {
+								// alle rechtenfelder unten die besetzt sind
+								if (board[i - 1][j + 1].fieldBesetzt()) {
+									// hat Spielfigur auf dem nächsten Feld andere farbe als auf
+									// jetzigem feld?
+									if (board[i][j].getSpielfigur().getFarbenEnum() != board[i - 1][j + 1].getSpielfigur().getFarbenEnum()) {
+										// feld zweil felder weiter besetz?
+										if (!board[i - 2][j + 2].fieldBesetzt()) {
+											bullies.add(board[i][j].getSpielfigur());
+										}
+									}
+								}
+							}
+
+							// rechte grenze?
+							else if (j - 2 < 0) {
+								// alle linken felder unten die besetzt sind
+								if (board[i - 1][j - 1].fieldBesetzt()) {
+									// hat Spielfigur auf dem nächsten Feld andere farbe als auf
+									// jetzigem feld?
+									if (board[i][j].getSpielfigur().getFarbenEnum() != board[i - 1][j - 1].getSpielfigur().getFarbenEnum()) {
+										// feld zwei felder weiter links besetz?
+										if (!board[i - 2][j - 2].fieldBesetzt()) {
+											bullies.add(board[i][j].getSpielfigur());
+										}
+									}
 								}
 							}
 						}
