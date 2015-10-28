@@ -194,10 +194,10 @@ private boolean zielIstGueltig(int[] posNext){
 			if(posNext[1]<= 11 && posNext[1]>=0){ // im feld (zahlen)
 				if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){
 					return true;
-				} else System.out.println("Dieses Feld ist besetzt!");
+				} else System.out.println("Dieses Feld ist besetzt! gebe 'startTurn' erneut ein ");
 			}
 		}
-	} else System.out.println("Ungültiges Feld! Dieses Feld ist WEIß!");
+	} else System.out.println("Ungültiges Feld! Dieses Feld ist WEIß! gebe 'startTurn' erneut ein ");
 	return false;
 }
 
