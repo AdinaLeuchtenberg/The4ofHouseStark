@@ -165,7 +165,7 @@ public void move(String start, String ziel){
 	int[] posNext = map.idToIndex(ziel);
 
 if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
-		throw new RuntimeException("Zug nicht durchführbar, muss pusten");
+		//throw new RuntimeException("Zug nicht durchführbar, muss pusten");
 	}
 	boolean istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
 	if(zielIstGueltig(posNext)){
@@ -196,7 +196,7 @@ private boolean zielIstGueltig(int[] posNext){
 				}
 			}
 		}
-	}
+	} else System.out.println("Ungültiges Feld! Dieses Feld ist WEIß!");
 	return false;
 }
 
