@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.List;
 
 import Basisklassen.Spielbrett;
 import Basisklassen.Spieler;
@@ -488,6 +489,20 @@ private void changeToDame(String ziel){
 			System.out.println("Eingabe konnte nicht gelesen werde");
 		}
 		return input;
+	}
+	
+	/**
+	 * method saves string of map in a arrayList
+	 * @return arrayList of board; each entry is one line
+	 */
+	public ArrayList<String> csvDatei() {
+		ArrayList<String> board = new ArrayList<String>();
+		String boardtoString = map.toString();
+		String[] parts = boardtoString.split("\n");
+			for(int i = 0; i < parts.length; i++) {
+				board.add(parts[i]);
+			}
+		return board;		
 	}
 		
 }

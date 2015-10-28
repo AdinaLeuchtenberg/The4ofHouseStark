@@ -123,8 +123,8 @@ public class Spielbrett {
 
 	@Override
 	public String toString() {
-		String boardString = "  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 | \n" + 
-														"_____________________________________________________________________________\n";
+		String boardString = "  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 | \n";
+														
 		for (int i = 0; i < this.board.length; i++) {
 			
 			boardString += (char) (108 - i) + " " + "|";
@@ -138,8 +138,7 @@ public class Spielbrett {
 			boardString += "|";
 
 			}
-			boardString += (char) (108 - i) + "\n" + 
-					"_____________________________________________________________________________\n";
+			boardString += (char) (108 - i) + "\n";
 		}
 		boardString += "  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 |";
 		return boardString;
