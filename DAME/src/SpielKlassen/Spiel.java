@@ -184,78 +184,129 @@ private boolean zielIstGueltig(int[] posNext){
 					return true;
 				}  
 		}
-			// geht nach oben rechts als Dame wenn schlagbarer Stein im Weg ist:
-			for(int h=1; h<10;h++){		
+	// Dame kann ganz ohne schlagen ganz hoch nach rechts laufen:
+				for(int l=0; l<11; l++){
+					if(map.getField(posNow[0]+l, posNow[1]+l).fieldBesetzt()){
+						return true;
+					}
+				}	
+		
+		// geht nach oben rechts als Dame wenn schlagbarer Stein im Weg ist:
+			for(int h=0; h<11;h++){		
 			if(posNext[0]==posNow[0]+h){		// buchstabe +1
 						if(posNext[1] == posNow[1]+h){	// zahl+1
 							if(map.getField(posNow[0]+h, posNow[1]+h).fieldBesetzt()){	// ist bestetzt?
 								if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
-									if(!map.getField(posNow[0]+h+1, posNow[1]+h+1).fieldBesetzt()){
-									if(posNext[0] == posNext[0]+h+1 && posNext[1]==posNext[1]+h+1){	// test rechts eins weiter nach oben 
-								return true;
+								} else {
+									for(int x=1; x<11-h; x++){
+										if(map.getField(posNow[0]+h+x, posNow[1]+h+x).fieldBesetzt()){
+											if(!map.getField(posNow[0]+h+x+1, posNow[1]+h+x+1).fieldBesetzt()){
+												return true; // test rechts weiter nach oben 
+											}
+										}
+									}
+								}
 							} 
 						}
 					}
 				}
-			}
-		}
-			}				
-							
-						 for(int i=1; i<10;i++){
+
+	
+			// Dame kann ganz ohne schlagen ganz hoch nach links laufen:
+			for(int g=0; g<11; g++){
+				if(map.getField(posNow[0]+g, posNow[1]-g).fieldBesetzt()){
+					return true;
+				}
+			}	
+	
+		// geht nach oben links als Dame wenn schlagbarer Stein im Weg ist:		
+						 for(int i=0; i<11;i++){
 								if(posNext[0]==posNow[0]+i){		// buchstabe +1
 								if(posNext[1] == posNow[1]-i){	// zahl-1
 								if(map.getField(posNow[0]+i, posNow[1]-i).fieldBesetzt()){	// ist bestetzt?
-								if(map.getField(posNow[0]+i, posNow[1]-i).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
-									if(!map.getField(posNow[0]+i+1, posNow[1]+i-1).fieldBesetzt()){
-									if(posNext[0] == posNext[0]+i && posNext[1]==posNext[1]-i){ // test links eins weiter nach oben
-								return true;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-							
-				// geht nach unten als Dame wenn Stein schlagbar ist:
-				for(int j=1; j<10;j++){
-				if(posNext[0]==posNow[0]-j){ // buchstabe -1
-						if(posNext[1] == posNow[1]+j){	// zahl+1
-							if(map.getField(posNow[0]-j, posNow[1]+j).fieldBesetzt()){	// ist bestetzt?
-								if(map.getField(posNow[0]-j, posNow[1]+j).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
-									if(!map.getField(posNow[0]+j-1, posNow[1]+j+1).fieldBesetzt()){
-									if(posNext[0] == posNext[0]-j && posNext[1]==posNext[1]+j){	// test rechts eins weiter nach unten 
-								return true;
-									} 
+								if(map.getField(posNow[0]+i, posNow[1]-i).getSpielfigur().getFarbenEnum() == FarbEnum.black){// Gegner ?
+								}
 								}
 							}
-						}
-					}
-				}
-			}
-						for(int k=1; k<10;k++){
-							if(posNext[0]==posNow[0]-k){ // buchstabe -1
-								if(posNext[1] == posNow[1]-k){	// zahl-1
-									if(map.getField(posNow[0]-k, posNow[1]-k).fieldBesetzt()){	// ist bestetzt?
-										if(map.getField(posNow[0]-1, posNow[1]-k).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
-											if(!map.getField(posNow[0]+k-1, posNow[1]+k-1).fieldBesetzt()){
-												if(posNext[0] == posNext[0]-k && posNext[1]==posNext[1]-k){	// test links eins weiter nach unten
-													return true;
+						}	
+									else {
+										for(int x=1; x<11-i; x++){
+											if(map.getField(posNow[0]+i+x, posNow[1]-i-x).fieldBesetzt()){
+												if(!map.getField(posNow[0]+i+x+1, posNow[1]-i-x-1).fieldBesetzt()){
+													return true; // test links weiter nach oben 
 												}
 											}
 										}
 									}
-								}	
+
+	}
+			// Dame kann ganz ohne schlagen ganz runter nach rechts laufen:
+						for(int m=0; m<11; m++){
+							if(map.getField(posNow[0]-m, posNow[1]+m).fieldBesetzt()){
+									return true;
+								}
+							}	
+								
+				// geht nach unten rechts als Dame wenn Stein schlagbar ist:
+				for(int j=0; j<11;j++){
+				if(posNext[0]==posNow[0]-j){ // buchstabe -1
+						if(posNext[1] == posNow[1]+j){	// zahl+1
+							if(map.getField(posNow[0]-j, posNow[1]+j).fieldBesetzt()){	// ist bestetzt?
+								if(map.getField(posNow[0]-j, posNow[1]+j).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
+								}
 							}
 						}
+				}
+								else {
+									for(int x=1; x<11-j; x++){
+										if(map.getField(posNow[0]-j-x, posNow[1]+j+x).fieldBesetzt()){
+											if(!map.getField(posNow[0]-j-x-1, posNow[1]+j+x+1).fieldBesetzt()){
+												return true; // test rechts weiter nach unten
+											}
+										}
+									}
+								}
+							}
+
+				// Dame kann ganz ohne schlagen ganz unten nach links laufen:
+				for(int n=0; n<11; n++){
+					if(map.getField(posNow[0]-n, posNow[1]-n).fieldBesetzt()){
+						return true;
 					}
-		if(posNext[0]== posNow[0]+1){ // ein feld weiter (nach oben) // buchstaben nach oben 
+				}	
+		
+			// geht nach unten links als Dame wenn Stein schlagbar ist:
+						for(int k=0; k<11;k++){
+							if(posNext[0]==posNow[0]-k){ // buchstabe -1
+								if(posNext[1] == posNow[1]-k){	// zahl-1
+									if(map.getField(posNow[0]-k, posNow[1]-k).fieldBesetzt()){	// ist bestetzt?
+										if(map.getField(posNow[0]-1, posNow[1]-k).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
+										}
+									}
+								}
+							}
+										else {
+											for(int x=1; x<11-k; x++){
+												if(map.getField(posNow[0]-k-x, posNow[1]-k-x).fieldBesetzt()){
+													if(!map.getField(posNow[0]-k-x-1, posNow[1]-k-x-1).fieldBesetzt()){
+														return true; // test links weiter nach unten 
+													}
+												}
+											}
+										}
+										}
+				}
+
+	// Stein zieht ein Feld hoch rechts oder links:
+	else { 
+			if(posNext[0]== posNow[0]+1){ // ein feld weiter (nach oben) // buchstaben nach oben 
 			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){ // Feld nach rechts oder links 
-				return true;
+				if (!map.getField(posNext[0], posNext[1]).fieldBesetzt()){
+					return true;
 			}
 		}
-	
-		// geht nach oben als Stein wenn Stein schlagbar ist:
+	}
+		// geht nach oben rechts als Stein wenn Stein schlagbar ist:
 		if(posNext[0]==posNow[0]+1){		// buchstabe +1
 			if(posNext[1] == posNow[1]+1){	// zahl+1
 				if(map.getField(posNow[0]+1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
@@ -266,13 +317,16 @@ private boolean zielIstGueltig(int[] posNext){
 			}
 		}
 	}
-}
-				else{ if(map.getField(posNow[0]+1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
+		}
+	// geht nach oben links als Stein wenn Stein schlagbar ist:
+				else{ 
+					if(map.getField(posNow[0]+1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
 					if(map.getField(posNow[0]+1, posNow[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
 					if(posNext[0] == posNext[0]+1 && posNext[1]==posNext[1]-1){ // test links eins weiter nach oben
 					return true;
 				}
 					}
+				}
 				}
 				}
 		return false;
@@ -282,58 +336,82 @@ private boolean zielIstGueltig(int[] posNext){
 			
 private void schlagen(int[] posNow, int[] posNext){
 	if(token.getDame()){
-		if (zielIstErreichbar(posNext,posNext)){
-			if(!map.getField(posNext[0]+1,posNext[1]+1).fieldBesetzt()){	
-						map.getField(posNext[0],posNext[1]).setSpielfigur(null);
+		if (zielIstErreichbar(posNow,posNext)){
+			for(int x=0; x< 11; x++){
+			if(!map.getField(posNext[0]+x,posNext[1]+x).fieldBesetzt()){	
+						map.getField(posNext[0]+x-1,posNext[1]+x-1).setSpielfigur(null);
 						int j =24;
 						while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 							j++;
 						} TokenArray[j] =null;
 					}
-					map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+					map.getField(posNext[0]+x,posNext[1]+x).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
 					map.getField(posNow[0],posNow[1]).setSpielfigur(null);
 			}
+		}
+		if (zielIstErreichbar(posNow,posNext)){
+			for(int t=0; t< 11; t++){
+			if(!map.getField(posNext[0]+t,posNext[1]-t).fieldBesetzt()){	
+				map.getField(posNext[0]+t-1,posNext[1]-t+1).setSpielfigur(null);
+				int j =24;
+				while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
+					j++;
+				} TokenArray[j] =null;
+			}
+			map.getField(posNext[0]+t,posNext[1]-t).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
+	}
+		}
 		
-		if (zielIstErreichbar(posNext,posNext)){
-			if(!map.getField(posNext[0]+1,posNext[1]-1).fieldBesetzt()){	
+		if (zielIstErreichbar(posNow,posNext)){
+			for(int o=0; o<11;o++){
+			if(!map.getField(posNext[0]-o,posNext[1]+o).fieldBesetzt()){	
+				map.getField(posNext[0]-o+1,posNext[1]+o-1).setSpielfigur(null);
+				int j =24;
+				while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
+					j++;
+				} TokenArray[j] =null;
+			}
+			map.getField(posNext[0]-o,posNext[1]+o).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
+	}
+		}
+		if (zielIstErreichbar(posNow,posNext)){
+			for(int z=0; z<11;z++){
+			if(!map.getField(posNext[0]-z,posNext[1]-z).fieldBesetzt()){	
+				map.getField(posNext[0]-z+1,posNext[1]-z+1).setSpielfigur(null);
+				int j =24;
+				while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
+					j++;
+				} TokenArray[j] =null;
+			}
+			map.getField(posNext[0]-z,posNext[1]-z).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
+	}
+	}
+	} else {
+		if(zielIstErreichbar(posNow,posNext)){
+			if(!map.getField(posNext[0]+1,posNext[1]+1).fieldBesetzt()){	
 				map.getField(posNext[0],posNext[1]).setSpielfigur(null);
 				int j =24;
 				while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 					j++;
 				} TokenArray[j] =null;
 			}
-			map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+			map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
 			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
 	}
-	if(token.getDame()){
-		if (zielIstErreichbar(posNext,posNext)){
-			if(!map.getField(posNext[0]-1,posNext[1]+1).fieldBesetzt()){	
-				map.getField(posNext[0],posNext[1]).setSpielfigur(null);
-				int j =24;
-				while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
-					j++;
-				} TokenArray[j] =null;
-			}
-			map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
-			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
+		if(!map.getField(posNext[0]+1,posNext[1]-1).fieldBesetzt()){	
+			map.getField(posNext[0],posNext[1]).setSpielfigur(null);
+			int j =24;
+			while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
+				j++;
+			} TokenArray[j] =null;
+		}
+		map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+		map.getField(posNow[0],posNow[1]).setSpielfigur(null);
+}
 	}
-		if (zielIstErreichbar(posNext,posNext)){
-			if(!map.getField(posNext[0]-1,posNext[1]-1).fieldBesetzt()){	
-				map.getField(posNext[0],posNext[1]).setSpielfigur(null);
-				int j =24;
-				while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
-					j++;
-				} TokenArray[j] =null;
-			}
-			map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
-			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
-	}
-	}
-	}		
-	//überprüfe, ob zwischen den positionen gegner steht
-	//entferne Gegner von Feld
-	//reduziere Anzahl Token von Gegner
-	//wenn kein Gegner da war, tue einfach nichts
 
 private void changeToDame(String ziel){
 	int [] posZiel = map.idToIndex(ziel);
