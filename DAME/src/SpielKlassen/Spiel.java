@@ -46,6 +46,7 @@ public FarbEnum[] getFarbTokenArray(){
  * method which manages the game from beginning to end
  */
 private void gameLoop() {
+	System.out.println(map.getFigurenDieSchlagenKoennen());
 	boolean started = false;
 	this.gameInstruction();
 	String readIn = "";
