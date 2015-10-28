@@ -23,7 +23,7 @@ public class SpielfigurJUnitTest {
 	
 	@Before
 	public void newSpielfigur(){
-		spielstein = new Spielstein();
+		spielstein = new Spielfigur(null, farbenEnum, false);
 	}
 	
 	/**
