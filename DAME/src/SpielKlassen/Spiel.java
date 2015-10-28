@@ -141,7 +141,7 @@ public void move(String start, String ziel){
 	int[] posNow = map.idToIndex(start);
 	int[] posNext = map.idToIndex(ziel);
 
-
+if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 		throw new RuntimeException("Zug nicht durchführbar, muss pusten");
 	}
 	boolean istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
