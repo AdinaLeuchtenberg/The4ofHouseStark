@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import Basisklassen.Spielbrett;
 import SpielKlassen.Spiel;
 
 /**
@@ -15,21 +16,23 @@ import SpielKlassen.Spiel;
  */
 
 public class SpielJunitTest {
-	
-	private Spiel game;
-	
+		private Spiel game;
+		private Spielbrett map;
 	@Before
-	public void newSpiel(){
-	game = new Spiel();
+	public void newGame(){	
+	map = new Spielbrett();
+	System.out.println(map.toString());
 	}
 	
 	@Test
-	public void moveTest(String posJetzt, String posDann){
-		if(posJetzt !=null && posDann != null){
-			assertTrue(game.move(posJetzt, posDann));
+	public void Test(){
+	
+	
+		boolean x= true;
+	
+		System.out.println(map.toString());
+		if(map.getField(9,2).getSpielfigur()==null){
+				x=false;
 		}
-		
-	}
-	
-	
-}
+	assertTrue(x);
+}}
