@@ -141,7 +141,7 @@ public void move(String start, String ziel){
 	int[] posNow = map.idToIndex(start);
 	int[] posNext = map.idToIndex(ziel);
 
-	if(zielIstGueltig(posNext) && andererMussPusten(posNow)){
+
 		throw new RuntimeException("Zug nicht durchführbar, muss pusten");
 	}
 	boolean istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
@@ -369,20 +369,20 @@ private void changeToDame(String ziel){
 		int spieler2=0;
 	 
 		for(int i=0; i<TokenArray.length/2; i++){
-			if(TokenArray[i]!=null){
+			if(TokenArray[i]==null){
 				spieler1++;	
 			}
 		}
 		for(int j=TokenArray.length/2; j<48; j++){
-			if(TokenArray[j]!=null){
+			if(TokenArray[j]==null){
 				spieler2++;
 			}
 		}
-		if(spieler1==0){
+		if(spieler1==24){
 			System.out.println(player2.getSpielerName() + "has won!");
 			return true;
 		}
-		else if (spieler2==0){
+		else if (spieler2==24){
 			System.out.println(player1.getSpielerName() + "has won!");
 			return true;
 		}
