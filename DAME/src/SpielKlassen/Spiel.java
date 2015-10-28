@@ -59,7 +59,22 @@ private void gameLoop() {
 				System.err.println("please enter a name");
 				name1 = reader();
 			}
-			player1 = new Spieler(name1, FarbEnum.white);
+
+			System.out.println("Please choose your colour");
+			String color= reader();
+			switch(color){
+			case"black":
+				player1 = new Spieler(name1, FarbEnum.black);
+			break;
+			
+			case"white":
+				player1 = new Spieler(name1, FarbEnum.white);
+			break;
+
+			default:
+				System.out.println("Because your input was invalid you get the colour white");
+				player1 = new Spieler(name1, FarbEnum.white);
+			}
 			
 			System.out.println("Please enter the name of the second player:");
 			String name2 = reader();
@@ -67,7 +82,11 @@ private void gameLoop() {
 				System.err.println("please enter a name");
 				name2 = reader();
 			}
-			player2 = new Spieler(name2, FarbEnum.black);
+			if(player1.getFarbEnum()== FarbEnum.black){
+				player2 = new Spieler(name2, FarbEnum.white);
+			}else player2 = new Spieler(name2, FarbEnum.black);
+
+
 			System.out.println(player1.getSpielerName() + " is player one and has colour " + player1.getFarbEnum());
 			System.out.println(player2.getSpielerName() + " is player two and has colour " + player2.getFarbEnum());
 			
@@ -480,11 +499,11 @@ private void changeToDame(String ziel){
 			}
 		}
 		if(spieler1==24){
-			System.out.println(player2.getSpielerName() + "has won!");
+			System.out.println(player2.getSpielerName() + " has won!");
 			return true;
 		}
 		else if (spieler2==24){
-			System.out.println(player1.getSpielerName() + "has won!");
+			System.out.println(player1.getSpielerName() + " has won!");
 			return true;
 		}
 		else return false;
