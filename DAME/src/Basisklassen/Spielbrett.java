@@ -85,8 +85,8 @@ public class Spielbrett {
 	 */
 	public ArrayList<Spielfigur> getFigurenDieSchlagenKoennen() {
 		ArrayList<Spielfigur> bullies = new ArrayList<Spielfigur>();
-		for (int i = 0; i < this.board.length; i++) {
-			for (int j = 0; j < this.board[i].length; j++) {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[i].length; j++) {
 				// alle Felder die besetzt sind
 				if (board[i][j].fieldBesetzt()) {
 					// ist figur dame?
