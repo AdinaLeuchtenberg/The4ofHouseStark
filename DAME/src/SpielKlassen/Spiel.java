@@ -197,7 +197,7 @@ private boolean zielIstGueltig(int[] posNext){
 			if(posNext[0]==posNow[0]+h){		// buchstabe +1
 						if(posNext[1] == posNow[1]+h){	// zahl+1
 							if(map.getField(posNow[0]+h, posNow[1]+h).fieldBesetzt()){	// ist bestetzt?
-								if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
+								if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
 								} else {
 									for(int x=1; x<11-h; x++){
 										if(map.getField(posNow[0]+h+x, posNow[1]+h+x).fieldBesetzt()){
@@ -225,7 +225,7 @@ private boolean zielIstGueltig(int[] posNext){
 								if(posNext[0]==posNow[0]+i){		// buchstabe +1
 								if(posNext[1] == posNow[1]-i){	// zahl-1
 								if(map.getField(posNow[0]+i, posNow[1]-i).fieldBesetzt()){	// ist bestetzt?
-								if(map.getField(posNow[0]+i, posNow[1]-i).getSpielfigur().getFarbenEnum() == FarbEnum.black){// Gegner ?
+								if(map.getField(posNow[0]+i, posNow[1]-i).getSpielfigur().getFarbenEnum()!= player2.getFarbEnum()){// Gegner ?
 								}
 								}
 							}
@@ -253,7 +253,7 @@ private boolean zielIstGueltig(int[] posNext){
 				if(posNext[0]==posNow[0]-j){ // buchstabe -1
 						if(posNext[1] == posNow[1]+j){	// zahl+1
 							if(map.getField(posNow[0]-j, posNow[1]+j).fieldBesetzt()){	// ist bestetzt?
-								if(map.getField(posNow[0]-j, posNow[1]+j).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
+								if(map.getField(posNow[0]-j, posNow[1]+j).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
 								}
 							}
 						}
@@ -281,7 +281,7 @@ private boolean zielIstGueltig(int[] posNext){
 							if(posNext[0]==posNow[0]-k){ // buchstabe -1
 								if(posNext[1] == posNow[1]-k){	// zahl-1
 									if(map.getField(posNow[0]-k, posNow[1]-k).fieldBesetzt()){	// ist bestetzt?
-										if(map.getField(posNow[0]-1, posNow[1]-k).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
+										if(map.getField(posNow[0]-1, posNow[1]-k).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
 										}
 									}
 								}
@@ -311,7 +311,7 @@ private boolean zielIstGueltig(int[] posNext){
 		if(posNext[0]==posNow[0]+1){		// buchstabe +1
 			if(posNext[1] == posNow[1]+1){	// zahl+1
 				if(map.getField(posNow[0]+1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]+1, posNow[1]+1).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
+					if(map.getField(posNow[0]+1, posNow[1]+1).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
 						if(posNext[0] == posNext[0]+1 && posNext[1]==posNext[1]+1){	// test rechts eins weiter nach oben 
 					return true;
 				} 
@@ -322,7 +322,7 @@ private boolean zielIstGueltig(int[] posNext){
 	// geht nach oben links als Stein wenn Stein schlagbar ist:
 				else{ 
 					if(map.getField(posNow[0]+1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]+1, posNow[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.black){ // Gegner ?
+					if(map.getField(posNow[0]+1, posNow[1]-1).getSpielfigur().getFarbenEnum()!= player2.getFarbEnum()){ // Gegner ?
 					if(posNext[0] == posNext[0]+1 && posNext[1]==posNext[1]-1){ // test links eins weiter nach oben
 					return true;
 				}

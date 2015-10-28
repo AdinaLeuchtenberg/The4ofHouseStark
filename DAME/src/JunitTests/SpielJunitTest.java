@@ -24,13 +24,10 @@ public class SpielJunitTest {
 	}
 	
 	@Test
-	public boolean moveTest(String posJetzt, String posDann){
-		boolean m = true;
+	public void moveTest(String posJetzt, String posDann){
 		if(posJetzt !=null && posDann != null){
 			assertTrue(game.move(posJetzt, posDann));
-			return true;
 		}
-		else return false;
 		
 	}
 	
