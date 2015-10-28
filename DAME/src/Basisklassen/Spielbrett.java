@@ -164,9 +164,8 @@ public class Spielbrett {
 								if (!board[i + 2][j - 2].fieldBesetzt()) {
 									bullies.add(board[i][j].getSpielfigur());
 								}
-							}
-						} else // alle rechtenfelder unten die besetzt sind
-						if (board[i - 1][j + 1].fieldBesetzt()) {
+							}// alle rechtenfelder unten die besetzt sind
+						} else if (board[i - 1][j + 1].fieldBesetzt()) {
 							// hat Spielfigur auf dem nächsten Feld andere farbe als auf
 							// jetzigem feld?
 							if (board[i][j].getSpielfigur().getFarbenEnum() != board[i - 1][j + 1].getSpielfigur().getFarbenEnum()) {
