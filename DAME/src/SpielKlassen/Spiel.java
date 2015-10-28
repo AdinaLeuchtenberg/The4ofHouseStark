@@ -93,7 +93,10 @@ private void gameLoop() {
 		break;
 		case "start":
 			if(!started) {
+				if(player1.getFarbEnum()== FarbEnum.black){
 				player = player1;
+				}
+				else player = player2;
 				started = true;
 				System.out.println(map.toString());
 			} else {
