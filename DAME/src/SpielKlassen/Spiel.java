@@ -222,6 +222,8 @@ private boolean zielIstGueltig(int[] posNext){
 	// Dame kann ganz ohne schlagen ganz hoch nach rechts laufen:
 				for(int l=0; l<11; l++){
 					if(map.getField(posNow[0]+l, posNow[1]+l).fieldBesetzt()){
+						map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
+						map.getField(posNow[0], posNow[1]).setSpielfigur(null);						
 						return true;
 					}
 				}	
@@ -235,7 +237,7 @@ private boolean zielIstGueltig(int[] posNext){
 								} else {
 									for(int x=1; x<11-h; x++){
 										if(map.getField(posNow[0]+h+x, posNow[1]+h+x).fieldBesetzt()){
-											if(!map.getField(posNow[0]+h+x+1, posNow[1]+h+x+1).fieldBesetzt()){
+											if(!map.getField(posNow[0]+h+x+1, posNow[1]+h+x+1).fieldBesetzt()){		
 												return true; // test rechts weiter nach oben 
 											}
 										}
@@ -347,6 +349,8 @@ private boolean zielIstGueltig(int[] posNext){
 				if(map.getField(posNow[0]+1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
 					if(map.getField(posNow[0]+1, posNow[1]+1).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
 						if(posNext[0] == posNext[0]+1 && posNext[1]==posNext[1]+1){	// test rechts eins weiter nach oben 
+						//	map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
+						//	map.getField(posNow[0], posNow[1]).setSpielfigur(null);	 drüber noch auf besetzt testen		
 					return true;
 				} 
 			}
@@ -358,6 +362,8 @@ private boolean zielIstGueltig(int[] posNext){
 					if(map.getField(posNow[0]+1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
 					if(map.getField(posNow[0]+1, posNow[1]-1).getSpielfigur().getFarbenEnum()!= player2.getFarbEnum()){ // Gegner ?
 					if(posNext[0] == posNext[0]+1 && posNext[1]==posNext[1]-1){ // test links eins weiter nach oben
+						//	map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
+						//	map.getField(posNow[0], posNow[1]).setSpielfigur(null);	 drüber noch auf besetzt testen
 					return true;
 				}
 					}
@@ -369,6 +375,8 @@ private boolean zielIstGueltig(int[] posNext){
 				if(map.getField(posNow[0]-1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
 					if(map.getField(posNow[0]-1, posNow[1]+1).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
 						if(posNext[0] == posNext[0]-1 && posNext[1]==posNext[1]+1){	// test rechts eins weiter nach oben 
+							//	map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
+							//	map.getField(posNow[0], posNow[1]).setSpielfigur(null);	 drüber noch auf besetzt testen
 					return true;
 				} 
 			}
@@ -380,6 +388,8 @@ private boolean zielIstGueltig(int[] posNext){
 					if(map.getField(posNow[0]-1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
 					if(map.getField(posNow[0]-1, posNow[1]-1).getSpielfigur().getFarbenEnum()!= player2.getFarbEnum()){ // Gegner ?
 					if(posNext[0] == posNext[0]-1 && posNext[1]==posNext[1]-1){ // test links eins weiter nach oben
+						//	map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
+						//	map.getField(posNow[0], posNow[1]).setSpielfigur(null);	 drüber noch auf besetzt testen
 					return true;
 				}
 					}
