@@ -63,6 +63,7 @@ private void gameLoop() {
 
 			System.out.println("Please choose your colour");
 			String color= reader();
+			System.out.println("");
 			switch(color){
 			case"black":
 				player1 = new Spieler(name1, FarbEnum.black);
@@ -533,20 +534,6 @@ private void changeToDame(String ziel){
 			System.out.println("Eingabe konnte nicht gelesen werde");
 		}
 		return input;
-	}
-	
-	/**
-	 * method saves string of map in a arrayList
-	 * @return arrayList of board; each entry is one line
-	 */
-	public ArrayList<String> csvDatei() {
-		ArrayList<String> board = new ArrayList<String>();
-		String boardtoString = map.toString();
-		String[] parts = boardtoString.split("\n");
-			for(int i = 0; i < parts.length; i++) {
-				board.add(parts[i]);
-			}
-		return board;		
 	}
 		
 }
