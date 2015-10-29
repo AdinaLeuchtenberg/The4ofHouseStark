@@ -166,9 +166,10 @@ public void move(String start, String ziel){
 	int[] posNext = map.idToIndex(ziel);
 
 if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
-		//throw new RuntimeException("Zug nicht durchführbar, muss pusten");
+		throw new RuntimeException("Zug nicht durchführbar, muss pusten " + "Lösche eine der angegeben Figuren! " );
 	}
-	boolean istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
+	boolean istDame = true;
+	istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
 	if(zielIstGueltig(posNext)){
 		if(zielIstErreichbar(posNow, posNext)){
 			schlagen(posNow, posNext);
@@ -179,10 +180,18 @@ if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 
 private boolean andererMussPusten(int[] tokenKoords){
 	Spielfigur token = map.getField(tokenKoords[0], tokenKoords[1]).getSpielfigur();
-	ArrayList<Spielfigur> bullies = map.getFigurenDieSchlagenKoennen(); //das müsste natürlich implementiert werden :D
+	ArrayList<Spielfigur> bullies = map.getFigurenDieSchlagenKoennen(); 
 	for(Spielfigur f : bullies){
 		if(token.equals(f)){
 			return false;
+		} else {
+				for(Spielfigur g: bullies){
+					if(token.getFarbenEnum() == FarbEnum.black){
+						System.out.println(token);
+						map.getField(tokenKoords[0], tokenKoords[1]).setSpielfigur(null);
+					} else System.out.println(token);
+						map.getField(tokenKoords[0], tokenKoords[1]).setSpielfigur(null);
+				}
 		}
 	}
 	return true;
@@ -195,6 +204,7 @@ private boolean zielIstGueltig(int[] posNext){
 				if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){
 					return true;
 				} else System.out.println("Dieses Feld ist besetzt! gebe 'startTurn' erneut ein ");
+					return false;
 			}
 		}
 	} else System.out.println("Ungültiges Feld! Dieses Feld ist WEIß! gebe 'startTurn' erneut ein ");
