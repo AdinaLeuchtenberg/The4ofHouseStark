@@ -175,7 +175,7 @@ if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 		if(zielIstErreichbar(posNow, posNext)){
 			schlagen(posNow, posNext);
 		}
-		changeToDame(start);
+		changeToDame(ziel);
 	}
 }
 
@@ -470,8 +470,8 @@ private void schlagen(int[] posNow, int[] posNext){
 }
 	}
 
-private void changeToDame(String start){
-	int [] posZiel = map.idToIndex(start);
+private void changeToDame(String ziel){
+	int [] posZiel = map.idToIndex(ziel);
 		if(map.getField(posZiel[0], posZiel[1]).getSpielfigur().getFarbenEnum() == FarbEnum.black){
 			if (posZiel[0]==0){
 				map.getField(posZiel[0], posZiel[1]).getSpielfigur().setDame(true);
