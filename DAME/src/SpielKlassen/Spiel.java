@@ -173,7 +173,7 @@ if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 		if(zielIstErreichbar(posNow, posNext)){
 			schlagen(posNow, posNext);
 		}
-		changeToDame(ziel);
+		changeToDame(start);
 	}
 }
 
@@ -202,7 +202,7 @@ private boolean zielIstGueltig(int[] posNext){
 }
 
 	private boolean zielIstErreichbar(int[] posNow, int[] posNext){
-	if(token.getDame()){
+	if(map.getField(posNow[0], posNow[1]).getSpielfigur().getDame()){
 		if(posNext[0]==posNow[0]+1 || posNext[0]==posNow[0]-1){	// nächste Felder sind erreichbar
 			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){
 					return true;
@@ -381,7 +381,7 @@ private boolean zielIstGueltig(int[] posNext){
 
 			
 private void schlagen(int[] posNow, int[] posNext){
-	if(token.getDame()){
+	if(map.getField(posNow[0], posNow[1]).getSpielfigur().getDame()){
 		if (zielIstErreichbar(posNow,posNext)){
 			for(int x=0; x< 11; x++){
 			if(!map.getField(posNext[0]+x,posNext[1]+x).fieldBesetzt()){	
@@ -391,7 +391,7 @@ private void schlagen(int[] posNow, int[] posNext){
 							j++;
 						} TokenArray[j] =null;
 					}
-					map.getField(posNext[0]+x,posNext[1]+x).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+					map.getField(posNext[0]+x,posNext[1]+x).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur()); // setzten spielfigur neu, auf neues feld nach schlagen
 					map.getField(posNow[0],posNow[1]).setSpielfigur(null);
 			}
 		}
@@ -404,7 +404,7 @@ private void schlagen(int[] posNow, int[] posNext){
 					j++;
 				} TokenArray[j] =null;
 			}
-			map.getField(posNext[0]+t,posNext[1]-t).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+			map.getField(posNext[0]+t,posNext[1]-t).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur()); // setzten spielfigur neu, auf neues feld nach schlagen
 			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
 	}
 		}
@@ -418,7 +418,7 @@ private void schlagen(int[] posNow, int[] posNext){
 					j++;
 				} TokenArray[j] =null;
 			}
-			map.getField(posNext[0]-o,posNext[1]+o).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+			map.getField(posNext[0]-o,posNext[1]+o).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur()); // setzten spielfigur neu, auf neues feld nach schlagen
 			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
 	}
 		}
@@ -431,7 +431,7 @@ private void schlagen(int[] posNow, int[] posNext){
 					j++;
 				} TokenArray[j] =null;
 			}
-			map.getField(posNext[0]-z,posNext[1]-z).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+			map.getField(posNext[0]-z,posNext[1]-z).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur()); // setzten spielfigur neu, auf neues feld nach schlagen
 			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
 	}
 	}
@@ -444,7 +444,7 @@ private void schlagen(int[] posNow, int[] posNext){
 					j++;
 				} TokenArray[j] =null;
 			}
-			map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+			map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur()); // setzten spielfigur neu, auf neues feld nach schlagen
 			map.getField(posNow[0],posNow[1]).setSpielfigur(null);
 	}
 		if(!map.getField(posNext[0]+1,posNext[1]-1).fieldBesetzt()){	
@@ -454,21 +454,21 @@ private void schlagen(int[] posNow, int[] posNext){
 				j++;
 			} TokenArray[j] =null;
 		}
-		map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(token); // setzten spielfigur neu, auf neues feld nach schlagen
+		map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur()); // setzten spielfigur neu, auf neues feld nach schlagen
 		map.getField(posNow[0],posNow[1]).setSpielfigur(null);
 }
 	}
 
-private void changeToDame(String ziel){
-	int [] posZiel = map.idToIndex(ziel);
-		if(token.getFarbenEnum() == FarbEnum.black){
+private void changeToDame(String start){
+	int [] posZiel = map.idToIndex(start);
+		if(map.getField(posZiel[0], posZiel[1]).getSpielfigur().getFarbenEnum() == FarbEnum.black){
 			if (posZiel[0]==0){
-				token.setDame(true);
+				map.getField(posZiel[0], posZiel[1]).getSpielfigur().setDame(true);
 			}
 		}else {
-			if(token.getFarbenEnum() == FarbEnum.white){
+			if(map.getField(posZiel[0], posZiel[1]).getSpielfigur().getFarbenEnum() == FarbEnum.white){
 				if (posZiel[0]==11){
-					token.setDame(true);
+					map.getField(posZiel[0], posZiel[1]).getSpielfigur().setDame(true);
 		}
 	}
 		}
