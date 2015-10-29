@@ -167,7 +167,7 @@ public void move(String start, String ziel){
 	int[] posNext = map.idToIndex(ziel);
 
 if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
-		throw new RuntimeException("Zug nicht durchführbar, muss pusten " + "Lösche eine der angegeben Figuren! " );
+		System.err.println("Zug nicht durchführbar, muss pusten " + "Lösche eine der angegeben Figuren! " );
 	}
 	boolean istDame = true;
 	istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
@@ -186,7 +186,7 @@ private boolean andererMussPusten(int[] tokenKoords){
 		if(token.equals(f)){
 			return false;
 		} else {
-				for(Spielfigur g: bullies){
+				for(Spielfigur g: bullies){	// Löschen fürs pusten
 					if(token.getFarbenEnum() == FarbEnum.black){
 						System.out.println(token);
 						map.getField(tokenKoords[0], tokenKoords[1]).setSpielfigur(null);
