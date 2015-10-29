@@ -6,7 +6,7 @@ import ExtraKlassen.FarbEnum;
 
 public class Spielbrett {
 	private Spielfeld[][] board = new Spielfeld[12][12];
-	static String id = new String();
+	String id = new String();
 
 	public Spielbrett() {
 		createSpielbrett();
