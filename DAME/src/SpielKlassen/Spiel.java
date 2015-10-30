@@ -234,17 +234,25 @@ public int differenz(int[] posNow,int[]posNext){
 					}
 				}							
 						
-				}/*
-		// geht nach oben rechts als Dame wenn schlagbarer Stein im Weg ist:
+				}
+	// geht beliebig weit nach oben rechts als Dame wenn schlagbarer Stein im Weg ist und setzt auf das darauffolgende feld:
 		if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){//feld auf das ich ziehe besetzt?
 			for(int h=0; h<10;h++){		
+			if(map.getField(posNow[0]+h, posNow[1]+h).fieldBesetzt()){
+				if(map.getField(posNow[0]+h, posNow[1]+h)==map.getField(posNext[0]-1, posNext[1]-1)){
 				if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum()==map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
-					if(h==differenz(posNow,posNext)){
-						for(int q=0;q<=h;q++){
-							
+					return false;
+					}
+				if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum()!=map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
+					map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
+					map.getField(posNow[0], posNow[1]).setSpielfigur(null);
+					return true;
 						}
 					}
-					if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
+			}
+		}
+	}
+					/*if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
 						//for(int x=1; x<11-h; x++){
 						//if(!map.getField(posNow[0]+h+x, posNow[1]+h+x).fieldBesetzt()){
 							//return true;
