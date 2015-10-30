@@ -47,11 +47,11 @@ public abstract class KI {
 			Spielfigur figurDieSchlagenKann = board.getFigurenDieSchlagenKoennen().get(i);
 			int[] positionFigurDieSchlagenKann = board.idToIndex(figurDieSchlagenKann.getPosition());
 			if(figurDieSchlagenKann.getFarbenEnum() == FarbEnum.black) {
-				if(positionFigurDieSchlagenKann[0] < 3) {
+				if(positionFigurDieSchlagenKann[0] < 4) {
 					 return true;
 				}
 			} else if(figurDieSchlagenKann.getFarbenEnum() == FarbEnum.white) {
-					if(positionFigurDieSchlagenKann[0] > 8) {
+					if(positionFigurDieSchlagenKann[0] > 7) {
 						return true;
 					}
 				}
