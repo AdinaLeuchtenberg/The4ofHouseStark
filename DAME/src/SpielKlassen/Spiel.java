@@ -595,5 +595,21 @@ private void changeToDame(String ziel){
 		}
 		return input;
 	}
+	
+	/**
+	 * getter for map to use in KI
+	 * @return return the map
+	 */
+	public Spielbrett getMap() {
+		return map;
+	}
+	
+	/**
+	 * getter for the currentPlayer to use in KI
+	 * @return returns the current player
+	 */
+	public Spieler getCurrentPlayer() {
+		return player;
+	}
 		
 }
