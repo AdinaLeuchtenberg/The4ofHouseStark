@@ -433,8 +433,8 @@ private int differenz(int[] posNow,int[]posNext){
 private void schlagen(int[] posNow, int[] posNext){
 	if(map.getField(posNow[0], posNow[1]).getSpielfigur().getDame()){
 		if (zielIstErreichbar(posNow,posNext)){ // Dame rechts hoch und Stein löschen
-			for(int w=0; w<=posNext[1]; w++){
-				if(posNext[0] == posNow[0]-w && posNext[1] == posNow[1]-w){
+			for(int w=1; w<12;w++){
+				if(posNext[0] == posNow[0]+w && posNext[1] == posNow[1]+w){
 					if(map.getField(posNext[0]-1,posNext[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
 					map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 						int j =24;
@@ -453,7 +453,7 @@ private void schlagen(int[] posNow, int[] posNext){
 		}
 		// Dame links hoch Stein löschen 
 		if (zielIstErreichbar(posNow,posNext)){
-					for(int w=0; w<=posNext[1]; w++){
+					for(int w=1; w<12;w++){
 						if(posNext[0] == posNow[0]+w && posNext[1] == posNow[1]-w){
 							if(map.getField(posNext[0]-1,posNext[1]+1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
 							map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
@@ -473,8 +473,8 @@ private void schlagen(int[] posNow, int[] posNext){
 		}
 		// Dame rechts runter Stein löschen
 		if (zielIstErreichbar(posNow,posNext)){
-				for(int w=0; w<=posNext[1]; w++){
-					if(posNext[0] == posNow[0]+w && posNext[1] == posNow[1]-w){
+				for(int w=1; w<12;w++){
+					if(posNext[0] == posNow[0]-w && posNext[1] == posNow[1]+w){
 						if(map.getField(posNext[0]+1,posNext[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
 						map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 							int j =24;
@@ -493,7 +493,7 @@ private void schlagen(int[] posNow, int[] posNext){
 		}
 		// Dame links runter Stein löschen
 		if (zielIstErreichbar(posNow,posNext)){
-					for(int w=0; w<=posNext[1]; w++){
+					for(int w=1; w<12;w++){
 						if(posNext[0] == posNow[0]-w && posNext[1] == posNow[1]-w){
 							if(map.getField(posNext[0]+1,posNext[1]+1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
 							map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
