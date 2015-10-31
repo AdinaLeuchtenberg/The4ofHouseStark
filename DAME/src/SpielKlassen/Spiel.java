@@ -169,8 +169,7 @@ public void move(String start, String ziel){
 if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 		System.err.println("Zug nicht durchführbar, muss pusten " + "Lösche eine der angegeben Figuren! " );
 	}
-	boolean istDame = true;
-	istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
+	boolean istDame = map.getField(posNow[0], posNow[1]).getSpielfigur().getDame();
 	if(zielIstGueltig(posNext)){
 		if(zielIstErreichbar(posNow, posNext)){
 			schlagen(posNow, posNext);
