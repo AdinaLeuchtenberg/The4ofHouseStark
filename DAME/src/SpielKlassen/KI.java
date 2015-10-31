@@ -32,8 +32,86 @@ public abstract class KI {
 	/**
 	 * goal of the KI to keep tokens
 	 */
-	public void selbstNichtGeschlagenWerden() {
-		//TODO Manu
+	public boolean selbstNichtGeschlagenWerden(int[] posNext) {
+			// test auf Dame rechts hoch 
+		for(int i=2;i<12;i++){//von 2 über dem feld bis zum max. letzten feld auf dame testen
+			if(board.getField(posNext[0]+i, posNext[1]+i).fieldBesetzt()){
+				if(board.getField(posNext[0]+i, posNext[1]+i).getSpielfigur().getDame()){
+					if(board.getField(posNext[0]-1, posNext[1]-1).fieldBesetzt()){
+				return false;
+				}
+				}
+			}
+		}
+		// test auf Dame links hoch
+		for(int i=2;i<12;i++){//von 2 über dem feld bis zum max. letzten feld auf dame testen
+			if(board.getField(posNext[0]+i, posNext[1]-i).fieldBesetzt()){
+				if(board.getField(posNext[0]+i, posNext[1]-i).getSpielfigur().getDame()){
+					if(board.getField(posNext[0]-1, posNext[1]+1).fieldBesetzt()){
+				return false;
+				}
+			}
+		}
+		}
+		// test auf Dame rechts runter
+		for(int i=2;i<12;i++){//von 2 über dem feld bis zum max. letzten feld auf dame testen
+			if(board.getField(posNext[0]-i, posNext[1]+i).fieldBesetzt()){
+				if(board.getField(posNext[0]-i, posNext[1]+i).getSpielfigur().getDame()){
+					if(board.getField(posNext[0]+1, posNext[1]-1).fieldBesetzt()){
+				return false;
+				}
+			}
+		}
+	}
+		// test auf Dame links runter
+		for(int i=2;i<12;i++){//von 2 über dem feld bis zum max. letzten feld auf dame testen
+		if(board.getField(posNext[0]-i, posNext[1]-i).fieldBesetzt()){
+			if(board.getField(posNext[0]-i, posNext[1]-i).getSpielfigur().getDame()){
+				if(board.getField(posNext[0]+1, posNext[1]+1).fieldBesetzt()){
+			return false;
+			}
+		}
+	}
+}
+		if(spieler.getFarbEnum()==FarbEnum.white){//für weißen spieler
+			//rechts oben über zielfeld steht gegner, ist feld unten links von zielfeld frei
+			if(board.getField(posNext[0]+1,posNext[1]+1).fieldBesetzt()){
+				if(board.getField(posNext[0]+1,posNext[1]+1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
+					if(!board.getField(posNext[0]-1,posNext[1]-1).fieldBesetzt()){
+						return false;
+					}
+				}
+			}
+		//links oben über zielfeld steht gegner, ist feld unten rechts von zielfeld frei
+				if(board.getField(posNext[0]+1,posNext[1]-1).fieldBesetzt()){
+					if(board.getField(posNext[0]+1,posNext[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
+						if(!board.getField(posNext[0]-1,posNext[1]+1).fieldBesetzt()){
+							return false;
+						}
+					}
+				}return true;
+		}
+	if(spieler.getFarbEnum()== FarbEnum.black){
+	//für schwarzen spieler
+//rechts unten unter zielfeld steht gegner, ist feld oben	links von zielfeld frei
+	if(board.getField(posNext[0]-1,posNext[1]+1).fieldBesetzt()){
+		if(board.getField(posNext[0]-1,posNext[1]+1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
+			if(!board.getField(posNext[0]+1,posNext[1]-1).fieldBesetzt()){
+				return false;
+			}
+		}
+	}
+	//für schwarzen spieler
+	//links unten unter zielfeld steht gegner, ist feld oben	rechts von zielfeld frei
+		if(board.getField(posNext[0]-1,posNext[1]-1).fieldBesetzt()){
+			if(board.getField(posNext[0]-1,posNext[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
+				if(!board.getField(posNext[0]+1,posNext[1]+1).fieldBesetzt()){
+					return false;
+				}
+			}
+		}
+	}
+	return true;
 	}
 	
 	/**
