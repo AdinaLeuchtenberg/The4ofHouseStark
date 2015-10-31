@@ -9,17 +9,18 @@ import SpielKlassen.Spiel;
 public class DatenzugriffCSV implements iDatenzugriff {
 
 private Spiel game;
+private String map = game.toString();
+private String name = game.getCurrentPlayer().getSpielerName();
 private BufferedReader reader;
-	
-	public DatenzugriffCSV(){
-		game.getMap();
-		game.getCurrentPlayer();
-	}
-	public DatenzugriffCSV(BufferedReader reader) throws IOException{
+
+	public DatenzugriffCSV(BufferedReader reader,String name, String map) throws IOException{
+		this.map = map;
+		this.name = name;
 		try{
 			String line = reader.readLine();
-			String[] fields = line.split(";");
-			// map = fields[0]; nameCurrentPlayer [1];
+			String[] fields = line.split("|");
+			name = fields[0];
+			map = fields[1]; 
 		}
 		catch (NullPointerException e){
 			throw new IOException("Unexpected end of file");

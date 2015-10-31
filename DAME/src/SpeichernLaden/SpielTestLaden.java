@@ -16,7 +16,7 @@ public class SpielTestLaden {
 		try{
 			ois = new ObjectInputStream(new FileInputStream("game.ser"));
 			Spiel game = (Spiel) ois.readObject();
-			System.out.println(game);
+				System.out.println(game);
 		}
 		catch(FileNotFoundException e){
 			System.err.println("'game.ser' couldn't be generated");
@@ -36,7 +36,7 @@ public class SpielTestLaden {
 		BufferedReader reader =null;
 		try{
 			reader = new BufferedReader(new FileReader("dame.txt"));
-			DatenzugriffCSV dzCSV = new DatenzugriffCSV (reader);
+			DatenzugriffCSV dzCSV = new DatenzugriffCSV (reader, null, null);
 			System.out.println(dzCSV);
 		}
 		catch(FileNotFoundException e){

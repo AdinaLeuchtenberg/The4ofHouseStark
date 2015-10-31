@@ -37,7 +37,7 @@ public class SpielTestSpeichern {
 		PrintWriter pw = null;
 		try{
 			Spiel game = new Spiel();
-			DatenzugriffCSV dzCSV = new DatenzugriffCSV();
+			DatenzugriffCSV dzCSV = new DatenzugriffCSV(null, null, null);
 			dzCSV.writeToStream(new PrintWriter(System.out));
 			pw = new PrintWriter(new FileWriter("dame.txt"));
 			dzCSV.writeToStream(pw);
