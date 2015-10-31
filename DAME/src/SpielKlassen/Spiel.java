@@ -210,7 +210,7 @@ private boolean zielIstGueltig(int[] posNext){
 	} else System.out.println("Ungültiges Feld! Dieses Feld ist WEIß! gebe 'startTurn' erneut ein ");
 	return false;
 }
-public int differenz(int[] posNow,int[]posNext){
+private int differenz(int[] posNow,int[]posNext){
 	int i= 0;
 	if(posNow[0]>posNext[0]){
 		i=posNow[0]-posNext[0]-1;
@@ -347,6 +347,7 @@ public int differenz(int[] posNow,int[]posNext){
 
 	// Stein zieht ein Feld hoch rechts oder links:
 	else { 
+		if(player.getFarbEnum()== FarbEnum.white){
 			if(posNext[0]== posNow[0]+1){ // ein feld weiter (nach oben) // buchstaben nach oben 
 			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){ // Feld nach rechts oder links 
 				if (!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	
@@ -384,6 +385,18 @@ public int differenz(int[] posNow,int[]posNext){
 		}
 	}
 		}
+		}else{
+		//anderer Player(Farbe == black)
+	//stein kann nach unten rechts und links ziehen
+		if(posNext[0]== posNow[0]-1){ // ein feld weiter (nach oben) // buchstaben nach oben 
+			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){ // Feld nach rechts oder links 
+				if (!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	
+					map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
+					map.getField(posNow[0], posNow[1]).setSpielfigur(null);
+					return true;
+			}
+		}
+	} 
 		// geht nach unten(anderer PLAYER) rechts als Stein wenn Stein schlagbar ist:
 		if(posNext[0]==posNow[0]-2){		// buchstabe +2, da man ja eins überspringt
 			if(posNext[1] == posNow[1]+2){	// zahl+2, da man ja eins überspringt
@@ -412,6 +425,7 @@ public int differenz(int[] posNow,int[]posNext){
 		}
 	}
 }
+	}
 	}
 		return false;
 	}
