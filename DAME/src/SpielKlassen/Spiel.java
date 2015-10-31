@@ -233,11 +233,10 @@ public int differenz(int[] posNow,int[]posNext){
 						}
 					}
 				}							
-						
-				}
+			}
 	// geht beliebig weit nach oben rechts als Dame wenn schlagbarer Stein im Weg ist und setzt auf das darauffolgende feld:
 		if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){//feld auf das ich ziehe besetzt?
-			for(int h=0; h<10;h++){		
+			for(int h=0; h<10;h++){		//max. 10 felder zwischen posNow und posNext
 			if(map.getField(posNow[0]+h, posNow[1]+h).fieldBesetzt()){
 				if(map.getField(posNow[0]+h, posNow[1]+h)==map.getField(posNext[0]-1, posNext[1]-1)){
 				if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum()==map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
@@ -252,42 +251,6 @@ public int differenz(int[] posNow,int[]posNext){
 			}
 		}
 	}
-					/*if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
-						//for(int x=1; x<11-h; x++){
-						//if(!map.getField(posNow[0]+h+x, posNow[1]+h+x).fieldBesetzt()){
-							//return true;
-						}
-						if(map.getField(posNow[0]+h+x, posNow[1]+h+x).fieldBesetzt()){
-							if(map.getField(posNow[0]+h+x, posNow[1]+h+x).getSpielfigur().getFarbenEnum()==map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
-									return false;				}
-								if(x==differenz(posNow,posNext)){
-									return true;
-								}
-							}
-							
-							}
-						map.getField(posNow[0]+h, posNow[1]+h).setSpielfigur(null);
-						map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
-						map.getField(posNow[0], posNow[1]).setSpielfigur(null);
-							return true;
-			if(posNext[0]==posNow[0]+h+1){		// buchstabe +1
-						if(posNext[1] == posNow[1]+h+1){	// zahl+1
-							if(map.getField(posNow[0]+h, posNow[1]+h).fieldBesetzt()){	// ist bestetzt?
-								
-								} else {
-									for(int x=1; x<11-h; x++){
-										if(map.getField(posNow[0]+h+x, posNow[1]+h+x).fieldBesetzt()){
-											if(!map.getField(posNow[0]+h+x+1, posNow[1]+h+x+1).fieldBesetzt()){		
-												return true; // test rechts weiter nach oben 
-											}
-										}
-									}
-								}
-							} 
-						}
-					}
-				}
-*/
 	
 			// Dame kann ganz ohne schlagen ganz hoch nach links laufen:
 			if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){//feld auf das ich ziehe besetzt?
@@ -301,27 +264,26 @@ public int differenz(int[] posNow,int[]posNext){
 					}
 				}
 			}
-			}
-		// geht nach oben links als Dame wenn schlagbarer Stein im Weg ist:		
-						 for(int i=0; i<11;i++){
-								if(posNext[0]==posNow[0]+i){		// buchstabe +1
-								if(posNext[1] == posNow[1]-i){	// zahl-1
-								if(map.getField(posNow[0]+i, posNow[1]-i).fieldBesetzt()){	// ist bestetzt?
-								if(map.getField(posNow[0]+i, posNow[1]-i).getSpielfigur().getFarbenEnum()!= player2.getFarbEnum()){// Gegner ?
-								}
-								}
+			}	
+		// geht beliebig weit nach oben links als Dame wenn schlagbarer Stein im Weg ist und setzt auf das darauffolgende feld:
+			if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){//feld auf das ich ziehe besetzt?
+				for(int h=0; h<10;h++){		//max. 10 felder zwischen posNow und posNext
+				if(map.getField(posNow[0]+h, posNow[1]-h).fieldBesetzt()){
+					if(map.getField(posNow[0]+h, posNow[1]-h)==map.getField(posNext[0]-1, posNext[1]+1)){
+					if(map.getField(posNow[0]+h, posNow[1]-h).getSpielfigur().getFarbenEnum()==map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
+						return false;
+						}
+					if(map.getField(posNow[0]+h, posNow[1]-h).getSpielfigur().getFarbenEnum()!=map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
+						map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
+						map.getField(posNow[0], posNow[1]).setSpielfigur(null);
+						return true;
 							}
-						}	
-									else {
-										for(int x=1; x<11-i; x++){
-											if(map.getField(posNow[0]+i+x, posNow[1]-i-x).fieldBesetzt()){
-												if(!map.getField(posNow[0]+i+x+1, posNow[1]-i-x-1).fieldBesetzt()){
-													return true; // test links weiter nach oben 
-												}
-											}
-										}
-									}
-								}
+						}
+				}
+			}
+		}		
+
+			
 			// Dame kann ganz ohne schlagen ganz runter nach rechts laufen:
 						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){
 						for(int m=0; m<=differenz(posNow,posNext); m++){
@@ -334,26 +296,23 @@ public int differenz(int[] posNow,int[]posNext){
 							}
 						}
 					}
-				// geht nach unten rechts als Dame wenn Stein schlagbar ist:
-				for(int j=0; j<11;j++){
-				if(posNext[0]==posNow[0]-j){ // buchstabe -1
-						if(posNext[1] == posNow[1]+j){	// zahl+1
-							if(map.getField(posNow[0]-j, posNow[1]+j).fieldBesetzt()){	// ist bestetzt?
-								if(map.getField(posNow[0]-j, posNow[1]+j).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
-								}
-							}
-						}
-				}
-								else {
-									for(int x=1; x<11-j; x++){
-										if(map.getField(posNow[0]-j-x, posNow[1]+j+x).fieldBesetzt()){
-											if(!map.getField(posNow[0]-j-x-1, posNow[1]+j+x+1).fieldBesetzt()){
-												return true; // test rechts weiter nach unten
-											}
+					// geht beliebig weit nach unten rechts als Dame wenn schlagbarer Stein im Weg ist und setzt auf das darauffolgende feld:
+						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){//feld auf das ich ziehe besetzt?
+							for(int h=0; h<10;h++){		//max. 10 felder zwischen posNow und posNext
+							if(map.getField(posNow[0]-h, posNow[1]+h).fieldBesetzt()){
+								if(map.getField(posNow[0]-h, posNow[1]+h)==map.getField(posNext[0]+1, posNext[1]-1)){
+								if(map.getField(posNow[0]-h, posNow[1]+h).getSpielfigur().getFarbenEnum()==map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
+									return false;
+									}
+								if(map.getField(posNow[0]-h, posNow[1]+h).getSpielfigur().getFarbenEnum()!=map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
+									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
+									map.getField(posNow[0], posNow[1]).setSpielfigur(null);
+									return true;
 										}
 									}
-								}
 							}
+						}
+					}		
 
 				// Dame kann ganz ohne schlagen ganz unten nach links laufen:
 				if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){
@@ -368,26 +327,23 @@ public int differenz(int[] posNow,int[]posNext){
 				}
 				}	
 		
-			// geht nach unten links als Dame wenn Stein schlagbar ist:
-						for(int k=0; k<11;k++){
-							if(posNext[0]==posNow[0]-k){ // buchstabe -1
-								if(posNext[1] == posNow[1]-k){	// zahl-1
-									if(map.getField(posNow[0]-k, posNow[1]-k).fieldBesetzt()){	// ist bestetzt?
-										if(map.getField(posNow[0]-k, posNow[1]-k).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
-										}
-									}
+			// geht beliebig weit nach unten links als Dame wenn schlagbarer Stein im Weg ist und setzt auf das darauffolgende feld:
+				if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){//feld auf das ich ziehe besetzt?
+					for(int h=0; h<10;h++){		//max. 10 felder zwischen posNow und posNext
+					if(map.getField(posNow[0]-h, posNow[1]-h).fieldBesetzt()){
+						if(map.getField(posNow[0]-h, posNow[1]-h)==map.getField(posNext[0]+1, posNext[1]+1)){
+						if(map.getField(posNow[0]-h, posNow[1]-h).getSpielfigur().getFarbenEnum()==map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
+							return false;
+							}
+						if(map.getField(posNow[0]-h, posNow[1]-h).getSpielfigur().getFarbenEnum()!=map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
+							map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
+							map.getField(posNow[0], posNow[1]).setSpielfigur(null);
+							return true;
 								}
 							}
-										else {
-											for(int x=1; x<11-k; x++){
-												if(map.getField(posNow[0]-k-x, posNow[1]-k-x).fieldBesetzt()){
-													if(!map.getField(posNow[0]-k-x-1, posNow[1]-k-x-1).fieldBesetzt()){
-														return true; // test links weiter nach unten 
-													}
-												}
-											}
-										}
-										}
+					}
+				}
+			}		
 				}
 
 	// Stein zieht ein Feld hoch rechts oder links:
@@ -400,13 +356,13 @@ public int differenz(int[] posNow,int[]posNext){
 					return true;
 			}
 		}
-	}
+	} 
 		// geht nach oben rechts als Stein wenn Stein schlagbar ist:
 		if(posNext[0]==posNow[0]+2){		// buchstabe +2, da man ja eins überspringt
 			if(posNext[1] == posNow[1]+2){	// zahl+2, da man ja eins überspringt
 				if(map.getField(posNow[0]+1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]+1, posNow[1]+1).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
-						if(!map.getField(posNext[0]+1, posNext[1]+1).fieldBesetzt()){	// test ist rechts drüber frei?
+					if(map.getField(posNow[0]+1, posNow[1]+1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
+						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// test ist rechts drüber frei?
 									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
 											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
 					return true;
@@ -416,25 +372,27 @@ public int differenz(int[] posNow,int[]posNext){
 	}
 		}
 	// geht nach oben links als Stein wenn Stein schlagbar ist:
-				else{ 
-					if(map.getField(posNow[0]+1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]+1, posNow[1]-1).getSpielfigur().getFarbenEnum()!= player2.getFarbEnum()){ // Gegner ?
-					if(posNext[0] == posNext[0]+1 && posNext[1]==posNext[1]-1){ // test links eins weiter nach oben
-						//	map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
-						//	map.getField(posNow[0], posNow[1]).setSpielfigur(null);	 drüber noch auf besetzt testen
+		if(posNext[0]==posNow[0]+2){		// buchstabe +2, da man ja eins überspringt
+			if(posNext[1] == posNow[1]-2){	// zahl+2, da man ja eins überspringt
+				if(map.getField(posNow[0]+1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
+					if(map.getField(posNow[0]+1, posNow[1]-1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
+						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// zielfeld frei
+									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
+											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
 					return true;
-				}
-					}
-				}
-				}
+				} 
+			}
+		}
+	}
+		}
 		// geht nach unten(anderer PLAYER) rechts als Stein wenn Stein schlagbar ist:
-		if(posNext[0]==posNow[0]-1){		// buchstabe +1
-			if(posNext[1] == posNow[1]+1){	// zahl+1
+		if(posNext[0]==posNow[0]-2){		// buchstabe +2, da man ja eins überspringt
+			if(posNext[1] == posNow[1]+2){	// zahl+2, da man ja eins überspringt
 				if(map.getField(posNow[0]-1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]-1, posNow[1]+1).getSpielfigur().getFarbenEnum() != player2.getFarbEnum()){ // Gegner ?
-						if(posNext[0] == posNext[0]-1 && posNext[1]==posNext[1]+1){	// test rechts eins weiter nach oben 
-							//	map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
-							//	map.getField(posNow[0], posNow[1]).setSpielfigur(null);	 drüber noch auf besetzt testen
+					if(map.getField(posNow[0]-1, posNow[1]+1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
+						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// zielfeld frei
+									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
+											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
 					return true;
 				} 
 			}
@@ -442,18 +400,20 @@ public int differenz(int[] posNow,int[]posNext){
 	}
 		}
 	// geht nach unten(anderer PLAYER) links als Stein wenn Stein schlagbar ist:
-				else{ 
-					if(map.getField(posNow[0]-1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]-1, posNow[1]-1).getSpielfigur().getFarbenEnum()!= player2.getFarbEnum()){ // Gegner ?
-					if(posNext[0] == posNext[0]-1 && posNext[1]==posNext[1]-1){ // test links eins weiter nach oben
-						//	map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
-						//	map.getField(posNow[0], posNow[1]).setSpielfigur(null);	 drüber noch auf besetzt testen
+		if(posNext[0]==posNow[0]-2){		// buchstabe +2, da man ja eins überspringt
+			if(posNext[1] == posNow[1]-2){	// zahl-2, da man ja eins überspringt
+				if(map.getField(posNow[0]-1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
+					if(map.getField(posNow[0]-1, posNow[1]-1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
+						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// zielfeld frei
+									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).spielfigur);
+											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
 					return true;
-				}
-					}
-				}
-				}
-				}
+				} 
+			}
+		}
+	}
+}
+	}
 		return false;
 	}
 			
