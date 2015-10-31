@@ -1,5 +1,7 @@
 package SpielKlassen;
 
+import java.util.Random;
+
 import Basisklassen.Spielbrett;
 import Basisklassen.Spieler;
 import Basisklassen.Spielfigur;
@@ -10,24 +12,56 @@ public abstract class KI {
 	private Spieler spieler;
 	private Spiel spiel = new Spiel();
 	private Spielbrett board = spiel.getMap();
+	private Spielfigur token;
 	
 	public KI(Spieler spieler) {
 		this.spieler = spieler;	
 	}
 	
 	/**
-	 * Goal of the KI to reach the other end of the board
+	 *Goal of the KI to reach the other end of the board
+	 *@return returns true if there is no token to beat
+	 *returns false if there is one (schlagen?)
 	 */
-	public void zurDameWerden() {
+	public boolean zurDameWerden() {
 		//TODO Tamara
-	}
-	
+				if(board.getFigurenDieSchlagenKoennen()==null){
+					String positionSpielfigur = token.getPosition();
+					if(token.getFarbenEnum() == FarbEnum.black) {
+						//choose a token which is the closest to index 11
+						return true;
+					}
+					if(token.getFarbenEnum() == FarbEnum.white) {
+						//choose a token which is the closest to index 0
+						return true;
+					}
+					
+					
+				}return false; //schlagen()?
+			}
+			
 	/**
-	 * goal of the KI to take away the tokens of the other player
+	 * goal of the KI to take away the tokens of the other player(random)
+	 * @return returns true if the KI can take one or more tokens of the other player
+	 * return false if there is no token to beat
 	 */
-	public void schlagen() {
+	public boolean schlagen() {
 		//TODO Tamara
-	}
+		for(int i = 0; i < 12; i++) {
+			if(board.getFigurenDieSchlagenKoennen()!=null){
+			Spielfigur figurDieSchlagenKann = board.getFigurenDieSchlagenKoennen().get(i);
+				if(figurDieSchlagenKann.getFarbenEnum() == FarbEnum.black) {
+					//int Spielfigur[(new Random()).nextInt(Spielfigur.length)];
+					return true;
+					
+			} else if(figurDieSchlagenKann.getFarbenEnum() == FarbEnum.white) {
+						//int Spielfigur[(new Random()).nextInt(Spielfigur.length)];
+						return true;
+					}
+				}
+			
+			}	return false;
+		}
 	
 	/**
 	 * goal of the KI to keep tokens
