@@ -180,7 +180,7 @@ if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 private boolean andererMussPusten(int[] tokenKoords){
 	Spielfigur token = map.getField(tokenKoords[0], tokenKoords[1]).getSpielfigur();
 	ArrayList<Spielfigur> bullies = map.getFigurenDieSchlagenKoennen(); 
-	if (bullies==null){
+	if (bullies.isEmpty()){
 		return false;
 	}else{
 	for(Spielfigur f : bullies){
