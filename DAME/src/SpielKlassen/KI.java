@@ -28,17 +28,20 @@ public abstract class KI {
 		// TODO Tamara
 		if (board.getFigurenDieSchlagenKoennen() == null) {
 			String positionSpielfigur = token.getPosition();
+			if(spiel.getCurrentPlayer().getFarbEnum()== FarbEnum.black){
 			if (token.getFarbenEnum() == FarbEnum.black) {
 				// choose a token which is the closest to index 11
+				positionSpielfigur.lastIndexOf();
 				return true;
 			}
-			if (token.getFarbenEnum() == FarbEnum.white) {
-				// choose a token which is the closest to index 0
-				return true;
+			if(spiel.getCurrentPlayer().getFarbEnum()== FarbEnum.white){
+				if(token.getFarbenEnum() == FarbEnum.white) {
+					//choose a token which have the highest position to index 0
+					positionSpielfigur.lastIndexOf();
+					return true;
 			}
 
-		}
-		return false; // schlagen()?
+		}else return false;
 	}
 
 	/**
@@ -47,24 +50,24 @@ public abstract class KI {
 	 * @return returns true if the KI can take one or more tokens of the other
 	 *         player return false if there is no token to beat
 	 */
-	public boolean schlagen() {
-		// TODO Tamara
-		for (int i = 0; i < 12; i++) {
-			if (board.getFigurenDieSchlagenKoennen() != null) {
-				Spielfigur figurDieSchlagenKann = board.getFigurenDieSchlagenKoennen().get(i);
-				if (figurDieSchlagenKann.getFarbenEnum() == FarbEnum.black) {
-					// int Spielfigur[(new Random()).nextInt(Spielfigur.length)];
-					return true;
-
-				} else if (figurDieSchlagenKann.getFarbenEnum() == FarbEnum.white) {
-					// int Spielfigur[(new Random()).nextInt(Spielfigur.length)];
-					return true;
-				}
+			public void schlagen() {
+				//TODO Tamara
+				for(int i = 0; i < 12; i++) {
+					if(board.getFigurenDieSchlagenKoennen()!=null){
+					Spielfigur figurDieSchlagenKann = board.getFigurenDieSchlagenKoennen().get(i);
+						if(figurDieSchlagenKann.getFarbenEnum() == FarbEnum.black) {
+							if(){
+								Random rand = new Random();
+								this.board = rand.nextInt();
+							 }
+							}						
+					} else if(figurDieSchlagenKann.getFarbenEnum() == FarbEnum.white) {
+							Random rand = new Random();
+							this.token = rand.nextInt();
+							//int figurDieSchlagenKann(new Random()).nextInt(figurDieSchlagenKann.length)];
+							}
+					}
 			}
-
-		}
-		return false;
-	}
 
 	/**
 	 * goal of the KI to keep tokens
