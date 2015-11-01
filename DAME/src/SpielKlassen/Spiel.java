@@ -183,17 +183,10 @@ private boolean andererMussPusten(int[] tokenKoords){
 	for(Spielfigur f : bullies){
 		if(token.equals(f)){
 			return false;
-		} else {
-				for(Spielfigur g: bullies){	// Löschen fürs pusten
-					if(g.getFarbenEnum() == FarbEnum.black){
-						System.out.println(token);
-						map.getField(tokenKoords[0], tokenKoords[1]).setSpielfigur(null);
-					} else System.out.println(token);
-						map.getField(tokenKoords[0], tokenKoords[1]).setSpielfigur(null);
-				}
-		}
+		} 
 	}
-	return true;
+			schlagen(tokenKoords, tokenKoords);
+			return true;
 }
 
 private boolean zielIstGueltig(int[] posNext){
