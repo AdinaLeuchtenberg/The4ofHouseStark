@@ -185,7 +185,7 @@ private boolean andererMussPusten(int[] tokenKoords){
 			return false;
 		} else {
 				for(Spielfigur g: bullies){	// Löschen fürs pusten
-					if(token.getFarbenEnum() == FarbEnum.black){
+					if(g.getFarbenEnum() == FarbEnum.black){
 						System.out.println(token);
 						map.getField(tokenKoords[0], tokenKoords[1]).setSpielfigur(null);
 					} else System.out.println(token);
