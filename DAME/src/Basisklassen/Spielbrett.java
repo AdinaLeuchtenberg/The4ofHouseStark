@@ -241,7 +241,12 @@ public class Spielbrett {
 			for (int j = 0; j < this.board[i].length; j++) {
 
 				try {
-					boardString += board[i][j].getSpielfigur().getFarbenEnum();
+					boardString += board[i][j].getSpielfigur().getFarbenEnum() + ",";
+					boardString += board[i][j].getSpielfigur().getPosition() + ",";
+					if(board[i][j].getSpielfigur().getDame()) {
+						boardString += "istDame";
+					}
+					else boardString += "keineDame";
 				} catch (NullPointerException e) {
 					boardString += "     ";
 				}
