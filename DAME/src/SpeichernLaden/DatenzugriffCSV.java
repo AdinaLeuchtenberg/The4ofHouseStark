@@ -9,7 +9,7 @@ import SpielKlassen.Spiel;
 public class DatenzugriffCSV implements iDatenzugriff {
 
 private Spiel game;
-private String map = game.toString();
+private String map = game.getMap().toString();
 private String name = game.getCurrentPlayer().getSpielerName();
 private BufferedReader reader;
 
@@ -17,8 +17,8 @@ private BufferedReader reader;
 		this.map = map;
 		this.name = name;
 		try{
-			String line = reader.readLine();
-			String[] fields = line.split("|");
+			String line = reader.readLine();	// list ganze reihe bis n/
+			String[] fields = line.split("|"); // splitted die werte an der stelle "|"
 			name = fields[0];
 			map = fields[1]; 
 		}
@@ -33,11 +33,11 @@ private BufferedReader reader;
 		}
 	}
 	public void writeToStream(PrintWriter pw){
-		pw.println(game.getCurrentPlayer().getSpielerName()+ ";" + game.getMap());
+		pw.println(name+ ";" + map);
 		pw.flush();
 	}
 	@Override 
 	public String toString(){
-		return game.getCurrentPlayer().getSpielerName() + " "+ game.getMap();
+		return name + " "+ map;
 	}
 }

@@ -12,7 +12,7 @@ import SpielKlassen.Spiel;
 public class SpielTestSpeichern {
 
 	public static void main(String[] args) {
-		ObjectOutputStream oos = null;
+		/*ObjectOutputStream oos = null;
 		try{
 			DatenzugriffSerialisiert dzs = new DatenzugriffSerialisiert(null, null);
 			oos = new ObjectOutputStream(new FileOutputStream("game.ser"));
@@ -32,15 +32,17 @@ public class SpielTestSpeichern {
 			catch (Exception e){
 				System.err.println("Error occured when trying to close the file ");
 			}
-		}
+		}*/
 //CSV:
 		PrintWriter pw = null;
 		try{
-			Spiel game = new Spiel();
+			// Spiel game = new Spiel();
 			DatenzugriffCSV dzCSV = new DatenzugriffCSV(null, null, null);
 			dzCSV.writeToStream(new PrintWriter(System.out));
 			pw = new PrintWriter(new FileWriter("dame.txt"));
 			dzCSV.writeToStream(pw);
+			//System.out.println(dzCSV.toString());
+
 		}
 		catch(FileNotFoundException e){
 			System.err.println("'game.ser' couldn't be generated");
