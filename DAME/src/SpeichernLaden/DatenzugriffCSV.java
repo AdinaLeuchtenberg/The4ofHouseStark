@@ -4,13 +4,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import Basisklassen.Spielbrett;
 import ExtraKlassen.FarbEnum;
 import SpielKlassen.Spiel;
 
 public class DatenzugriffCSV implements iDatenzugriff {
-
+	
+//muss initialisiert werden!
 private Spiel game;
-private String map = game.getMap().toString();
+
+private Spielbrett map1 = game.getMap();
+private String map = map1.toString();
 private String name = game.getCurrentPlayer().getSpielerName();
 private FarbEnum color = game.getCurrentPlayer().getFarbEnum();
 private BufferedReader reader;

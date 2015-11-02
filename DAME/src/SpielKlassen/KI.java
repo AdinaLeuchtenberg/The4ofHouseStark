@@ -197,6 +197,7 @@ public abstract class KI {
 				if (figurDieSchlagenKann.getFarbenEnum() == FarbEnum.black) {
 					if (positionFigurDieSchlagenKann[0] < 4) {
 						return true;
+						figurenDieInSchusslinieStehen.add(e);
 					}
 				}
 			} else {

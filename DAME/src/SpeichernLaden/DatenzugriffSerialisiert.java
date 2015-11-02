@@ -12,6 +12,7 @@ public class DatenzugriffSerialisiert implements iDatenzugriff,Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	//muss inititalisiert werden! 
 	private Spiel game;
 	private String map = game.getMap().toString();
 	private FarbEnum color = game.getCurrentPlayer().getFarbEnum();
@@ -21,5 +22,6 @@ public class DatenzugriffSerialisiert implements iDatenzugriff,Serializable {
 		this.map = map;
 		this.name = name;
 		this.color=color;
+		
 	}
 }
