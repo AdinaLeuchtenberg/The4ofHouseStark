@@ -1,5 +1,6 @@
 package SpielKlassen;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import Basisklassen.Spielbrett;
@@ -13,6 +14,7 @@ public abstract class KI {
 	private Spiel spiel = new Spiel();
 	private Spielbrett board = spiel.getMap();
 	private Spielfigur token;
+	private ArrayList<Spielfigur> figurenDieInSchusslinieStehen = new ArrayList<Spielfigur>(); 
 
 	public KI(Spieler spieler) {
 		this.spieler = spieler;
@@ -162,7 +164,23 @@ public abstract class KI {
 		}
 		return true;
 	}
+	
+	/**
+	 * @return return true if token has to move to not get taken away from the other player
+	 */
 
+	public boolean inSchusslinieStehen() {
+		for (int i = 0; i < 12; i++) {
+			Spielfigur figurDieSchlagenKann =  board.getFigurenDieSchlagenKoennen().get(i);
+			if(spiel.getCurrentPlayer().getFarbEnum() != figurDieSchlagenKann.getFarbenEnum()) {
+				if(!figurDieSchlagenKann.getDame()){
+					
+				}return true;
+			}	
+	} 
+		return false;
+	
+	}
 	/**
 	 * goal of the KI to prevent that the other player gets a "Dame"
 	 * 
