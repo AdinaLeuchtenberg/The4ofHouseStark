@@ -15,7 +15,6 @@ public class Spiel implements iBediener {
 
 
 	private Spielbrett map;
-	private Spielfigur token;
 	private Spieler player1;
 	private Spieler player2;
 	private Spieler player;
@@ -170,7 +169,9 @@ if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 		System.err.println("Zug nicht durchführbar, muss pusten " + "Lösche eine der angegeben Figuren! " );
 	}
 	if(zielIstGueltig(posNext)){
-		if(zielIstErreichbar(posNow, posNext)){
+		if(zielIstErreichbar(posNow, posNext)){ // ?hier person setzten
+			map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
+			map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 			schlagen(posNow, posNext);
 		}
 		changeToDame(ziel);
@@ -180,10 +181,14 @@ if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 private boolean andererMussPusten(int[] tokenKoords){
 	Spielfigur token = map.getField(tokenKoords[0], tokenKoords[1]).getSpielfigur();
 	ArrayList<Spielfigur> bullies = map.getFigurenDieSchlagenKoennen(); 
+	if (bullies.isEmpty()){
+		return false;
+	}else{
 	for(Spielfigur f : bullies){
 		if(token.equals(f)){
 			return false;
 		} 
+	}
 	}
 			schlagen(tokenKoords, tokenKoords);
 			return true;
@@ -218,8 +223,6 @@ private int differenz(int[] posNow,int[]posNext){
 					for(int l=0; l<=differenz(posNow,posNext); l++){ //zählt die differenz hoch
 						if(!map.getField(posNow[0]+l, posNow[1]+l).fieldBesetzt()){//felder dazwischen leer?
 						if(l==differenz(posNow,posNext)){//nach letzter prüfung wird zug ausgeführt
-						map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-						map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 							return true;
 						}
 					}
@@ -234,8 +237,6 @@ private int differenz(int[] posNow,int[]posNext){
 					return false;
 					}
 				if(map.getField(posNow[0]+h, posNow[1]+h).getSpielfigur().getFarbenEnum()!=map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
-					map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-					map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 					return true;
 						}
 					}
@@ -248,8 +249,6 @@ private int differenz(int[] posNow,int[]posNext){
 			for(int g=0;g<=differenz(posNow,posNext); g++){
 				if(!map.getField(posNow[0]+g, posNow[1]-g).fieldBesetzt()){//felder dazwischen leer?
 					if(g==differenz(posNow,posNext)){//nach letzter prüfung wird zug ausgeführt
-						map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-						map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 							return true;
 						
 					}
@@ -265,8 +264,6 @@ private int differenz(int[] posNow,int[]posNext){
 						return false;
 						}
 					if(map.getField(posNow[0]+h, posNow[1]-h).getSpielfigur().getFarbenEnum()!=map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
-						map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-						map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 						return true;
 							}
 						}
@@ -280,8 +277,6 @@ private int differenz(int[] posNow,int[]posNext){
 						for(int m=0; m<=differenz(posNow,posNext); m++){
 							if(!map.getField(posNow[0]-m, posNow[1]+m).fieldBesetzt()){//felder dazwischen leer?
 								if(m==differenz(posNow,posNext)){//nach letzter prüfung wird zug ausgeführt
-									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-										map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 											return true;
 								}
 							}
@@ -296,8 +291,6 @@ private int differenz(int[] posNow,int[]posNext){
 									return false;
 									}
 								if(map.getField(posNow[0]-h, posNow[1]+h).getSpielfigur().getFarbenEnum()!=map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
-									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-									map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 									return true;
 										}
 									}
@@ -310,8 +303,6 @@ private int differenz(int[] posNow,int[]posNext){
 				for(int n=0; n<=differenz(posNow,posNext); n++){
 					if(!map.getField(posNow[0]-n, posNow[1]-n).fieldBesetzt()){//felder dazwischen leer?
 						if(n==differenz(posNow,posNext)){//nach letzter prüfung wird zug ausgeführt
-							map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-								map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 									return true;
 						}
 					}
@@ -327,8 +318,6 @@ private int differenz(int[] posNow,int[]posNext){
 							return false;
 							}
 						if(map.getField(posNow[0]-h, posNow[1]-h).getSpielfigur().getFarbenEnum()!=map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){
-							map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-							map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 							return true;
 								}
 							}
@@ -343,8 +332,7 @@ private int differenz(int[] posNow,int[]posNext){
 			if(posNext[0]== posNow[0]+1){ // ein feld weiter (nach oben) // buchstaben nach oben 
 			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){ // Feld nach rechts oder links 
 				if (!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	
-					map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-					map.getField(posNow[0], posNow[1]).setSpielfigur(null);
+					
 					return true;
 			}
 		}
@@ -355,8 +343,7 @@ private int differenz(int[] posNow,int[]posNext){
 				if(map.getField(posNow[0]+1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
 					if(map.getField(posNow[0]+1, posNow[1]+1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
 						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// test ist rechts drüber frei?
-									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
+										
 					return true;
 				} 
 			}
@@ -369,8 +356,7 @@ private int differenz(int[] posNow,int[]posNext){
 				if(map.getField(posNow[0]+1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
 					if(map.getField(posNow[0]+1, posNow[1]-1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
 						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// zielfeld frei
-									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
+											
 					return true;
 				} 
 			}
@@ -380,23 +366,21 @@ private int differenz(int[] posNow,int[]posNext){
 		}else{
 		//anderer Player(Farbe == black)
 	//stein kann nach unten rechts und links ziehen
-		if(posNext[0]== posNow[0]-1){ // ein feld weiter (nach oben) // buchstaben nach oben 
-			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){ // Feld nach rechts oder links 
+		if(posNext[0]== posNow[0]+1){ // ein feld weiter (nach unten) // buchstaben nach unten 
+			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){// Feld nach rechts oder links 
 				if (!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	
-					map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-					map.getField(posNow[0], posNow[1]).setSpielfigur(null);
+					
 					return true;
 			}
 		}
 	} 
 		// geht nach unten(anderer PLAYER) rechts als Stein wenn Stein schlagbar ist:
-		if(posNext[0]==posNow[0]-2){		// buchstabe +2, da man ja eins überspringt
+		if(posNext[0]==posNow[0]+2){		// buchstabe +2, da man ja eins überspringt
 			if(posNext[1] == posNow[1]+2){	// zahl+2, da man ja eins überspringt
-				if(map.getField(posNow[0]-1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]-1, posNow[1]+1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
+				if(map.getField(posNow[0]+1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
+					if(map.getField(posNow[0]+1, posNow[1]+1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
 						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// zielfeld frei
-									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
+											
 					return true;
 				} 
 			}
@@ -404,13 +388,12 @@ private int differenz(int[] posNow,int[]posNext){
 	}
 		}
 	// geht nach unten(anderer PLAYER) links als Stein wenn Stein schlagbar ist:
-		if(posNext[0]==posNow[0]-2){		// buchstabe +2, da man ja eins überspringt
+		if(posNext[0]==posNow[0]+2){		// buchstabe +2, da man ja eins überspringt
 			if(posNext[1] == posNow[1]-2){	// zahl-2, da man ja eins überspringt
-				if(map.getField(posNow[0]-1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]-1, posNow[1]-1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
+				if(map.getField(posNow[0]+1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
+					if(map.getField(posNow[0]+1, posNow[1]-1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
 						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// zielfeld frei
-									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
-											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
+										
 					return true;
 				} 
 			}
@@ -420,6 +403,7 @@ private int differenz(int[] posNow,int[]posNext){
 	}
 	}
 		return false;
+	// nach Zielerreichbar ist zug ausgeführt, deshalb kann bei schlagen auf posNOw nur null sein!! 
 	}
 			
 private void schlagen(int[] posNow, int[] posNext){
@@ -572,6 +556,9 @@ private void schlagen(int[] posNow, int[] posNext){
 
 private void changeToDame(String ziel){
 	int [] posZiel = map.idToIndex(ziel);
+	if(map.getField(posZiel[0], posZiel[1]).getSpielfigur() == null){
+		System.out.println("keine spielfigur");
+	}
 		if(map.getField(posZiel[0], posZiel[1]).getSpielfigur().getFarbenEnum() == FarbEnum.black){
 			if (posZiel[0]==0){
 				map.getField(posZiel[0], posZiel[1]).getSpielfigur().setDame(true);
