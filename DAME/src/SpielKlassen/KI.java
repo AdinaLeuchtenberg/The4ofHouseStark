@@ -73,6 +73,7 @@ public abstract class KI {
 	 * goal of the KI to keep tokens
 	 */
 	public boolean selbstNichtGeschlagenWerden(int[] posNext) {
+		
 		// test auf Dame rechts hoch
 		for (int i = 2; i < 12; i++) {// von 2 über dem feld bis zum max. letzten
 																	// feld auf dame testen
