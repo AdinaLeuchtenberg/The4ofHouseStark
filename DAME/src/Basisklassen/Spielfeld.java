@@ -23,8 +23,9 @@ public Spielfeld(FarbEnum y,String x,Spielfigur figur){
 	this.spielfigur = figur;
 }
 
-public void setSpielfigur(Spielfigur figur){
+public void setSpielfigur(Spielfigur figur, String id){
 	this.spielfigur= figur;
+	this.ID = id;
 }
 
 public Spielfigur getSpielfigur(){
