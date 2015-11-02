@@ -170,9 +170,9 @@ if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 	}
 	if(zielIstGueltig(posNext)){
 		if(zielIstErreichbar(posNow, posNext)){ // ?hier person setzten
+			schlagen(posNow, posNext);
 			map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
 			map.getField(posNow[0], posNow[1]).setSpielfigur(null);
-			schlagen(posNow, posNext);
 		}
 		changeToDame(ziel);
 	}
