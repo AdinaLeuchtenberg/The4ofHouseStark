@@ -384,8 +384,8 @@ private int differenz(int[] posNow,int[]posNext){
 		}else{
 		//anderer Player(Farbe == black)
 	//stein kann nach unten rechts und links ziehen
-		if(posNext[0]== posNow[0]-1){ // ein feld weiter (nach oben) // buchstaben nach oben 
-			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){ // Feld nach rechts oder links 
+		if(posNext[0]== posNow[0]+1){ // ein feld weiter (nach unten) // buchstaben nach unten 
+			if(posNext[1]==posNow[1]+1 || posNext[1]== posNow[1]-1){// Feld nach rechts oder links 
 				if (!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	
 					map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
 					map.getField(posNow[0], posNow[1]).setSpielfigur(null);
@@ -394,10 +394,10 @@ private int differenz(int[] posNow,int[]posNext){
 		}
 	} 
 		// geht nach unten(anderer PLAYER) rechts als Stein wenn Stein schlagbar ist:
-		if(posNext[0]==posNow[0]-2){		// buchstabe +2, da man ja eins überspringt
+		if(posNext[0]==posNow[0]+2){		// buchstabe +2, da man ja eins überspringt
 			if(posNext[1] == posNow[1]+2){	// zahl+2, da man ja eins überspringt
-				if(map.getField(posNow[0]-1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]-1, posNow[1]+1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
+				if(map.getField(posNow[0]+1, posNow[1]+1).fieldBesetzt()){	// ist bestetzt?
+					if(map.getField(posNow[0]+1, posNow[1]+1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
 						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// zielfeld frei
 									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
 											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
@@ -408,10 +408,10 @@ private int differenz(int[] posNow,int[]posNext){
 	}
 		}
 	// geht nach unten(anderer PLAYER) links als Stein wenn Stein schlagbar ist:
-		if(posNext[0]==posNow[0]-2){		// buchstabe +2, da man ja eins überspringt
+		if(posNext[0]==posNow[0]+2){		// buchstabe +2, da man ja eins überspringt
 			if(posNext[1] == posNow[1]-2){	// zahl-2, da man ja eins überspringt
-				if(map.getField(posNow[0]-1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
-					if(map.getField(posNow[0]-1, posNow[1]-1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
+				if(map.getField(posNow[0]+1, posNow[1]-1).fieldBesetzt()){	// ist bestetzt?
+					if(map.getField(posNow[0]+1, posNow[1]-1).getSpielfigur().getFarbenEnum() != map.getField(posNow[0], posNow[1]).getSpielfigur().getFarbenEnum()){ // Gegner ?
 						if(!map.getField(posNext[0], posNext[1]).fieldBesetzt()){	// zielfeld frei
 									map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
 											map.getField(posNow[0], posNow[1]).setSpielfigur(null);		
@@ -424,6 +424,7 @@ private int differenz(int[] posNow,int[]posNext){
 	}
 	}
 		return false;
+	// nach Zielerreichbar ist zug ausgeführt, deshalb kann bei schlagen auf posNOw nur null sein!! 
 	}
 			
 private void schlagen(int[] posNow, int[] posNext){
