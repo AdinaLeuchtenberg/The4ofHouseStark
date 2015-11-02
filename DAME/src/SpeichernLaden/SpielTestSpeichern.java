@@ -12,9 +12,9 @@ import SpielKlassen.Spiel;
 public class SpielTestSpeichern {
 
 	public static void main(String[] args) {
-		/*ObjectOutputStream oos = null;
+		ObjectOutputStream oos = null;
 		try{
-			DatenzugriffSerialisiert dzs = new DatenzugriffSerialisiert(null, null);
+			DatenzugriffSerialisiert dzs = new DatenzugriffSerialisiert(null, null, null);
 			oos = new ObjectOutputStream(new FileOutputStream("game.ser"));
 			oos.writeObject(dzs);
 			System.out.println(dzs);
@@ -32,7 +32,7 @@ public class SpielTestSpeichern {
 			catch (Exception e){
 				System.err.println("Error occured when trying to close the file ");
 			}
-		}*/
+		}//*/
 //CSV:
 		PrintWriter pw = null;
 		try{
