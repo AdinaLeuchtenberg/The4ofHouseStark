@@ -171,8 +171,9 @@ if(zielIstGueltig(posNext)&& andererMussPusten(posNow)){
 	if(zielIstGueltig(posNext)){
 		if(zielIstErreichbar(posNow, posNext)){ // ?hier person setzten
 			String newId = map.indexToId(posNext[0], posNext[1]);
-			map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur(),newId );
-			map.getField(posNow[0], posNow[1]).setSpielfigur(null,null);
+			map.getField(posNext[0], posNext[1]).setSpielfigur(map.getField(posNow[0], posNow[1]).getSpielfigur());
+			map.getField(posNow[0], posNow[1]).getSpielfigur().setPosition(newId);
+			map.getField(posNow[0], posNow[1]).setSpielfigur(null);
 			schlagen(posNow, posNext);
 		}
 		changeToDame(ziel);
@@ -412,13 +413,13 @@ private void schlagen(int[] posNow, int[] posNext){
 			for(int w=1; w<12;w++){
 				if(posNext[0] == posNow[0]+w && posNext[1] == posNow[1]+w){
 					if(map.getField(posNext[0]-1,posNext[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
-					map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(null,null);// löscht spielfigur
+					map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 						int j =24;
 						while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 							j++;
 						} TokenArray[j] =null;
 					}else {
-						map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(null,null);// löscht spielfigur
+						map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 						int j =0;
 						while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 							j++;
@@ -431,13 +432,13 @@ private void schlagen(int[] posNow, int[] posNext){
 					for(int w=1; w<12;w++){
 						if(posNext[0] == posNow[0]+w && posNext[1] == posNow[1]-w){
 							if(map.getField(posNext[0]-1,posNext[1]+1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
-							map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(null,null);// löscht spielfigur
+							map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
 								int j =24;
 								while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 									j++;
 								} TokenArray[j] =null;
 							}else {
-								map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(null,null);// löscht spielfigur
+								map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
 								int j =0;
 								while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 									j++;
@@ -451,13 +452,13 @@ private void schlagen(int[] posNow, int[] posNext){
 				for(int w=1; w<12;w++){
 					if(posNext[0] == posNow[0]-w && posNext[1] == posNow[1]+w){
 						if(map.getField(posNext[0]+1,posNext[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
-						map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(null,null);// löscht spielfigur
+						map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 							int j =24;
 							while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 								j++;
 							} TokenArray[j] =null;
 						}else {
-							map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(null,null);// löscht spielfigur
+							map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 							int j =0;
 							while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 								j++;
@@ -469,13 +470,13 @@ private void schlagen(int[] posNow, int[] posNext){
 					for(int w=1; w<12;w++){
 						if(posNext[0] == posNow[0]-w && posNext[1] == posNow[1]-w){
 							if(map.getField(posNext[0]+1,posNext[1]+1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
-							map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(null,null);// löscht spielfigur
+							map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
 								int j =24;
 								while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 									j++;
 								} TokenArray[j] =null;
 							}else {
-								map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(null,null);// löscht spielfigur
+								map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
 								int j =0;
 								while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 									j++;
@@ -488,13 +489,13 @@ private void schlagen(int[] posNow, int[] posNext){
 		if(posNext[0]==posNow[0]+2 && posNext[1]==posNow[1]+2){
 		if(map.getField(posNext[0]-1, posNext[1]-1).getSpielfigur()!=null){
 			if(map.getField(posNext[0]-1,posNext[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.white){	
-			map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(null,null);// löscht spielfigur
+			map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 						int j =24;
 						while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 							j++;
 						} TokenArray[j] =null;
 					}else {
-						map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(null,null);// löscht spielfigur
+						map.getField(posNext[0]-1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 						int j =0;
 						while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 							j++;
@@ -506,13 +507,13 @@ private void schlagen(int[] posNow, int[] posNext){
 		if(posNext[0]==posNow[0]+2 && posNext[1]==posNow[1]-2){
 		if(map.getField(posNext[0]-1, posNext[1]+1).getSpielfigur()!=null){
 			if(map.getField(posNext[0]-1,posNext[1]+1).getSpielfigur().getFarbenEnum() == FarbEnum.white){
-			map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(null,null);// löscht spielfigur
+			map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
 					int j =24;
 					while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 						j++;
 					} TokenArray[j] =null;
 				}else {
-					map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(null,null);// löscht spielfigur
+					map.getField(posNext[0]-1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
 					int j =0;
 					while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 						j++;
@@ -526,13 +527,13 @@ private void schlagen(int[] posNow, int[] posNext){
 			if(posNext[0]==posNow[0]-2 && posNext[1]==posNow[1]+2){
 		if(map.getField(posNext[0]+1, posNext[1]-1).getSpielfigur()!=null){
 			if(map.getField(posNext[0]+1,posNext[1]-1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
-			map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(null,null);// löscht spielfigur
+			map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 					int j =24;
 					while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 						j++;
 					} TokenArray[j] =null;
 				}else {
-					map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(null,null);// löscht spielfigur
+					map.getField(posNext[0]+1,posNext[1]-1).setSpielfigur(null);// löscht spielfigur
 					int j =0;
 					while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 						j++;
@@ -544,13 +545,13 @@ private void schlagen(int[] posNow, int[] posNext){
 			if(posNext[0]==posNow[0]-2 && posNext[1]==posNow[1]-2){
 		if(map.getField(posNext[0]+1, posNext[1]+1).getSpielfigur()!=null){
 			if(map.getField(posNext[0]+1,posNext[1]+1).getSpielfigur().getFarbenEnum() == FarbEnum.black){
-			map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(null,null);// löscht spielfigur
+			map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
 					int j =24;
 					while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 						j++;
 					} TokenArray[j] =null;
 				} else {
-					map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(null,null);// löscht spielfigur
+					map.getField(posNext[0]+1,posNext[1]+1).setSpielfigur(null);// löscht spielfigur
 					int j =0;
 					while(TokenArray[j]== null){		//löscht den Token aus den FarbTokenArray
 						j++;
