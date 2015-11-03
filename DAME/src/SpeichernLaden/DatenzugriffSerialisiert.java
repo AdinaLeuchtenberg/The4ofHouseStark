@@ -18,6 +18,13 @@ public class DatenzugriffSerialisiert implements iDatenzugriff,Serializable {
 	private FarbEnum color = game.getCurrentPlayer().getFarbEnum();
 	private String name = game.getCurrentPlayer().getSpielerName();
 	
+	/**
+	 * 
+	 * @param name
+	 * @param map
+	 * @param color
+	 */
+	
 	public DatenzugriffSerialisiert(String name, String map, FarbEnum color){
 		this.map = map;
 		this.name = name;

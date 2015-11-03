@@ -159,6 +159,7 @@ private void gameInstruction() {
 
 /**
  * method move
+ * @param start, ziel
  */
 
 public void move(String start, String ziel){
@@ -195,6 +196,11 @@ private boolean andererMussPusten(int[] tokenKoords){
 			schlagen(tokenKoords, tokenKoords);
 			return true;
 }
+/**
+ * 
+ * @param posNext
+ * @return
+ */
 
 private boolean zielIstGueltig(int[] posNext){
 	if(map.getField(posNext[0], posNext[1]).getColor() == FarbEnum.black){ 	// farb test 
@@ -407,7 +413,11 @@ private int differenz(int[] posNow,int[]posNext){
 		return false;
 	// nach Zielerreichbar ist zug ausgeführt, deshalb kann bei schlagen auf posNOw nur null sein!! 
 	}
-			
+/**
+ * 			
+ * @param posNow
+ * @param posNext
+ */
 private void schlagen(int[] posNow, int[] posNext){
 	if(map.getField(posNext[0], posNext[1]).getSpielfigur().getDame()){
 			for(int w=1; w<12;w++){
@@ -562,6 +572,10 @@ private void schlagen(int[] posNow, int[] posNext){
 		}
 	}
 }
+/**
+ * 
+ * @param ziel
+ */
 
 private void changeToDame(String ziel){
 	int [] posZiel = map.idToIndex(ziel);
@@ -580,6 +594,9 @@ private void changeToDame(String ziel){
 	}
 		}
 }
+/**
+ * changes the current player
+ */
 
 	private void changePlayer() {
 		if (player == player1) {
