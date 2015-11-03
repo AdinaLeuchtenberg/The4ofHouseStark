@@ -19,6 +19,14 @@ private String name = game.getCurrentPlayer().getSpielerName();
 private FarbEnum color = game.getCurrentPlayer().getFarbEnum();
 private BufferedReader reader;
 
+/**
+ * 
+ * @param reader
+ * @param name
+ * @param map
+ * @throws IOException
+ */
+
 	public DatenzugriffCSV(BufferedReader reader,String name, String map) throws IOException{
 		this.map = map;
 		this.name = name;
@@ -44,6 +52,10 @@ private BufferedReader reader;
 			throw new IOException("To few file elements");
 		}
 	}
+	/**
+	 * 
+	 * @param pw
+	 */
 	public void writeToStream(PrintWriter pw){
 		pw.println(name+ ";" + map);
 		pw.flush();

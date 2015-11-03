@@ -13,7 +13,7 @@ public class SpielTestSpeichern {
 
 	public static void main(String[] args) {
 		ObjectOutputStream oos = null;
-		/*try{
+		try{
 			DatenzugriffSerialisiert dzs = new DatenzugriffSerialisiert(null, null, null);
 			oos = new ObjectOutputStream(new FileOutputStream("game.ser"));
 			oos.writeObject(dzs);
@@ -36,7 +36,6 @@ public class SpielTestSpeichern {
 //CSV:
 		PrintWriter pw = null;
 		try{
-			// Spiel game = new Spiel();
 			DatenzugriffCSV dzCSV = new DatenzugriffCSV(null, null, null);
 			dzCSV.writeToStream(new PrintWriter(System.out));
 			pw = new PrintWriter(new FileWriter("dame.txt"));
