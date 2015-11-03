@@ -9,6 +9,9 @@ import Basisklassen.Spielbrett;
 import Basisklassen.Spieler;
 import Basisklassen.Spielfigur;
 import ExtraKlassen.FarbEnum;
+import SpeichernLaden.DatenzugriffCSV;
+import SpeichernLaden.DatenzugriffSerialisiert;
+import SpeichernLaden.iDatenzugriff;
 
 public class Spiel implements iBediener {
 
@@ -22,7 +25,12 @@ public class Spiel implements iBediener {
 	
 	public Spiel(){
 		map = new Spielbrett();
+		speichernCSV();
 		gameLoop();
+		
+		
+
+		
 		
 	}
 	/**
@@ -99,7 +107,7 @@ private void gameLoop() {
 				}
 				else player = player2;
 				started = true;
-				System.out.println(map.toString());
+				System.out.println(boardToString());
 			} else {
 				System.out.println("game has already started");
 			}
@@ -121,7 +129,7 @@ private void gameLoop() {
 		break;
 			
 		case "endturn":
-			System.out.println(map.toString());
+			System.out.println(boardToString());
 			changePlayer();
 			if(player == player1) {
 				System.out.println(player1.getSpielerName() + "'s turn");
@@ -133,6 +141,7 @@ private void gameLoop() {
 			
 		case "exit":
 			System.out.println("Thank you for playing");
+			speichernSerialisiert();
 			System.exit(0);
 		break;
 		
@@ -663,6 +672,25 @@ private void changeToDame(String ziel){
 	 */
 	public Spieler getCurrentPlayer() {
 		return player;
+	}
+	@Override
+	public String boardToString() {
+		return map.toString();
+		
+	}
+	
+	public Spiel getSpiel() {
+		return this;
+	}
+	
+	public void speichernSerialisiert() {
+		iDatenzugriff serialisiert = new DatenzugriffSerialisiert();
+		serialisiert.speichern(this);
+	}
+	
+	public void speichernCSV() {
+		iDatenzugriff csv = new DatenzugriffCSV();
+		csv.speichern(boardToString());
 	}
 		
 }

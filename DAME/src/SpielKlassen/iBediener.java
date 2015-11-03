@@ -3,6 +3,7 @@ package SpielKlassen;
 public interface iBediener {
 	
 	public String reader();
+	public String boardToString();
 	
 	
 	/*

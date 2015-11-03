@@ -233,29 +233,27 @@ public class Spielbrett {
 
 	@Override
 	public String toString() {
-		String boardString = "  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 | \n";
-
+		String boardString = "";
 		for (int i = 0; i < this.board.length; i++) {
 
-			boardString += (char) (108 - i) + " " + "|";
 			for (int j = 0; j < this.board[i].length; j++) {
 
 				try {
-					boardString += board[i][j].getSpielfigur().getFarbenEnum() + ",";
-					boardString += board[i][j].getSpielfigur().getPosition() + ",";
+					boardString += board[i][j].getSpielfigur().getFarbenEnum() + "|";
+					boardString += board[i][j].getSpielfigur().getPosition() + "|";
 					if(board[i][j].getSpielfigur().getDame()) {
 						boardString += "istDame";
 					}
 					else boardString += "keineDame";
 				} catch (NullPointerException e) {
-					boardString += "     ";
+					boardString += "e";
+
 				}
-				boardString += "|";
+				boardString += ",";
 
 			}
-			boardString += (char) (108 - i) + "\n";
+			boardString += "\n";
 		}
-		boardString += "  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10 |  11 |  12 |";
 		return boardString;
 	}
 }

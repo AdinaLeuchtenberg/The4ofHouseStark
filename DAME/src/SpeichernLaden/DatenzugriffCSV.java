@@ -1,63 +1,38 @@
 package SpeichernLaden;
 
-import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import Basisklassen.Spielbrett;
-import ExtraKlassen.FarbEnum;
-import SpielKlassen.Spiel;
-
 public class DatenzugriffCSV implements iDatenzugriff {
-	
-//muss initialisiert werden!
-private Spiel game;
 
-private Spielbrett map1 = game.getMap();
-private String map = map1.toString();
-private String name = game.getCurrentPlayer().getSpielerName();
-private FarbEnum color = game.getCurrentPlayer().getFarbEnum();
-private BufferedReader reader;
 
-/**
- * 
- * @param reader
- * @param name
- * @param map
- * @throws IOException
- */
-
-	public DatenzugriffCSV(BufferedReader reader,String name, String map) throws IOException{
-		this.map = map;
-		this.name = name;
+	@Override
+	public void speichern(Object o) {
+		PrintWriter pw = null;
 		try{
-			//String line = reader.readLine();	// list ganze reihe bis n/
-			String[] elements = new String [3];
-			elements = map.split("|"); // splitted die werte an der stelle "|"
-			name = elements[0];
-			if(color == FarbEnum.black){
-				String black = elements[1];
-			} else {
-				String white = elements[1];
-			}
-			map = elements[2]; 
+			pw = new PrintWriter(new FileWriter("dame.csv"));
+			pw.write((String)o);
+
 		}
-		catch (NullPointerException e){
-			throw new IOException("Unexpected end of file");
+		catch(FileNotFoundException e){
+			System.err.println("'game.ser' couldn't be generated");
 		}
-		catch(NumberFormatException e){
-			throw new IOException("False element format");
+		catch(IOException e){
+			System.err.println("Error during imput-/output: "+e);
 		}
-		catch(IndexOutOfBoundsException e){
-			throw new IOException("To few file elements");
+		finally{
+			if(pw!= null) pw.close();
 		}
-	}
-	/**
-	 * 
-	 * @param pw
-	 */
-	public void writeToStream(PrintWriter pw){
-		pw.println(name+ ";" + map);
 		pw.flush();
 	}
+
+	@Override
+	public void laden() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
