@@ -3,6 +3,8 @@ package Basisklassen;
 import java.util.ArrayList;
 
 import ExtraKlassen.FarbEnum;
+import SpielKlassen.KI;
+import SpielKlassen.KI_Dame;
 import SpielKlassen.iBediener;
 
 /**
@@ -30,5 +32,4 @@ public class Spieler {
 	public FarbEnum getFarbEnum() {
 		return farbEnum;
 	}
-	
 }

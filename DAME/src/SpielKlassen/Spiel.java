@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 import Basisklassen.Spielbrett;
 import Basisklassen.Spieler;
@@ -62,7 +61,8 @@ private void gameLoop() {
 
 			System.out.println("Please choose your colour");
 			String color= reader();
-			System.out.println("");
+			//System.out.println("Do you want to be human or a KI?");
+			//String humanOrKi = reader();
 			switch(color){
 			case"black":
 				player1 = new Spieler(name1, FarbEnum.black);
